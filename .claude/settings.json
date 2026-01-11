@@ -1,0 +1,40 @@
+{
+  "allowedTools": [
+    "Edit",
+
+    "Bash(ls:*)",
+    "Bash(pwd:*)",
+    "Bash(whoami:*)",
+
+    "Bash(cat:*)",
+    "Bash(sed:*)",
+    "Bash(awk:*)",
+    "Bash(grep:*)",
+    "Bash(rg:*)",
+    "Bash(find:*)",
+    "Bash(tree:*)",
+    "Bash(curl:*)",
+    "Bash(wget:*)",
+    "Bash(unzip:*)",
+    "Bash(tar:*)",
+    "Bash(git status:*)",
+    "Bash(git diff:*)",
+    "Bash(git log:*)",
+    "Bash(git show:*)",
+    "Bash(git branch:*)",
+    "Bash(git switch:*)",
+    "Bash(git checkout:*)",
+    "Bash(git restore:*)",
+
+    "Bash(git add:*)",
+    "Bash(git commit:*)",
+    "Bash(wp:*)",
+    "Bash(docker:*)",
+    "Bash(docker compose:*)"
+  ],
+  "notes": [
+    "Conservative allowlist: edits + safe read/inspect commands + git commit.",
+    "Intentionally NOT allowing rm, mv, curl, wget, docker, wp-cli by default.",
+    "Add more tools per project using /permissions or by extending this file."
+  ]
+}
