@@ -1,1 +1,72 @@
+# Theme archive
 themeforest-tGkA8NxD-organic-store-organic-food-eco-products-theme.zip
+
+# Environment and secrets
+.env
+.env.local
+
+# WordPress core files
+/wp-admin/
+/wp-includes/
+/wp-*.php
+/index.php
+/xmlrpc.php
+/license.txt
+/readme.html
+/.htaccess
+
+# WordPress config
+wp-config.php
+
+# WordPress uploads and cache
+/wp-content/uploads/
+/wp-content/cache/
+/wp-content/upgrade/
+/wp-content/backup-db/
+/wp-content/backups/
+/wp-content/blogs.dir/
+/wp-content/wp-cache-config.php
+/wp-content/advanced-cache.php
+/wp-content/jetpack-waf/
+/wp-content/index.php
+
+# WordPress plugins (exclude all third-party plugins)
+# Add custom plugins with negation pattern: !/wp-content/plugins/my-custom-plugin/
+/wp-content/plugins/*
+# Example: !/wp-content/plugins/my-custom-plugin/
+
+# Must-use plugins (exclude all by default)
+# Add custom mu-plugins with negation pattern: !/wp-content/mu-plugins/my-mu-plugin/
+/wp-content/mu-plugins/*
+# Example: !/wp-content/mu-plugins/my-mu-plugin/
+
+# WordPress themes (version only child theme)
+/wp-content/themes/*
+!/wp-content/themes/organics-child/
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+/wp-content/debug.log
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor directories
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node modules (for scripts)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Docker volumes (if using named volumes)
+/mysql-data/
+/wordpress-data/
