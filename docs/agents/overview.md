@@ -41,7 +41,7 @@ User Request → Orchestrator → Specialized Agents → Coordinated Outcome
 
 ---
 
-## The Eight Agents
+## The Nine Agents
 
 ### 1. Orchestrator 🎯
 **Role**: Coordinator and workflow manager
@@ -203,6 +203,56 @@ User Request → Orchestrator → Specialized Agents → Coordinated Outcome
 - Let documentation become outdated
 
 **Critical Rule**: **Exclusive owner of CHANGELOG.md. No change is complete without documentation.**
+
+---
+
+### 9. Legacy Initializer 🔍
+**Role**: Forensic analyst for legacy WordPress projects
+**Domain**: Existing production site onboarding
+**Invocation**: `/project:run-legacy-initializer`
+
+**Responsibilities**:
+- Forensic reconnaissance of existing WordPress installations
+- Core, theme, and plugin divergence analysis
+- Risk assessment and documentation
+- Agent system installation with legacy constraints
+- Operating Contract generation
+
+**Does NOT**:
+- Fix or refactor code (analysis only)
+- Run without backup confirmation
+- Modify existing files
+
+**Critical Rules**:
+- **Mutually exclusive** with `wordpress-initializer`
+- **Requires backup confirmation** before any analysis
+- **Read-only operation** — documents findings, never fixes
+
+---
+
+## Initializer Agents (Special Category)
+
+The system includes two mutually exclusive initializer agents:
+
+| Agent | Use Case | When to Use |
+|-------|----------|-------------|
+| `wordpress-initializer` | **New projects** | Starting fresh with a new WordPress installation |
+| `legacy-initializer` | **Existing projects** | Adopting a production site or legacy codebase |
+
+**Rule**: Only ONE initializer runs per project, ever. They cannot coexist.
+
+### Legacy Mode Constraints
+
+When `legacy-initializer` has run, it generates an **Operating Contract** that restricts future agent behavior:
+
+| Finding | Constraint Applied |
+|---------|-------------------|
+| Core modified | Core updates blocked, extra review required |
+| Parent theme modified | Theme updates blocked until child migration |
+| No child theme | Must create before any customization |
+| Security anomalies | Full audit required before deployment |
+
+Agents must check `/docs/legacy/legacy-profile.json` before making changes.
 
 ---
 
@@ -492,5 +542,5 @@ Backend Engineer → Reviewer → [Issues Found] → Backend Engineer
 
 ---
 
-**Last Updated**: 2026-01-11
+**Last Updated**: 2026-01-15
 **Maintained By**: Documenter Agent

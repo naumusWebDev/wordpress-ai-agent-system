@@ -16,6 +16,7 @@ Detailed breakdown of each agent's role, scope, and boundaries.
 | Scripter | Automation | `/scripts/wp-api/`, catalog | WordPress code |
 | Validator | Testing | Test reports | Code (tests only) |
 | Documenter | Documentation | `/docs/`, CHANGELOG.md | Code |
+| Legacy Initializer | Forensic Analysis | `/docs/legacy/`, reports | Existing code (read-only) |
 
 ---
 
@@ -320,6 +321,55 @@ Documentation specialist maintaining all project documentation and changelog.
 
 ---
 
+### Legacy Initializer 🔍
+
+**Full Name**: Legacy Initializer Agent
+**Command**: `/project:run-legacy-initializer`
+**Definition**: `/agents/legacy-initializer.md`
+
+#### Role
+Forensic analyst for onboarding existing WordPress projects in production (or clones) into the agent system.
+
+#### Responsibilities
+- Perform forensic reconnaissance of existing WordPress installations
+- Detect modifications to core, themes, and plugins
+- Generate divergence reports (core, theme, plugins)
+- Assess risks and document operational constraints
+- Install agent system with legacy-aware rules
+- Generate Operating Contract for future agents
+- Create machine-readable legacy profile (`legacy-profile.json`)
+
+#### Authority
+- Can analyze any file (read-only)
+- Can download official WordPress for comparison
+- Can install agent system structure
+- Can generate operational constraints for all agents
+- Can create `/docs/legacy/` documentation
+
+#### Limitations
+- **CRITICAL**: Cannot modify existing code (read-only analysis)
+- Cannot run without backup confirmation
+- Cannot fix or refactor detected issues
+- Cannot skip precondition checks
+- Cannot execute on production without explicit acknowledgment
+
+#### Mutual Exclusion
+- **Cannot coexist with `wordpress-initializer`**
+- Use `wordpress-initializer` for new projects
+- Use `legacy-initializer` for existing projects
+
+#### Outputs
+- `/docs/legacy/forensic-report.md` (summary)
+- `/docs/legacy/core-divergence.md` (core modifications)
+- `/docs/legacy/theme-divergence.md` (theme analysis)
+- `/docs/legacy/plugin-landscape.md` (plugin inventory)
+- `/docs/legacy/risk-map.md` (risk assessment)
+- `/docs/legacy/legacy-profile.json` (machine-readable profile)
+- `/docs/legacy/operating-contract.md` (constraints)
+- Updated `agents.md` with legacy rules
+
+---
+
 ## Cross-Agent Collaboration
 
 ### Backend + Frontend (Common Scenario)
@@ -434,7 +484,7 @@ Documentation specialist maintaining all project documentation and changelog.
 
 ## Summary
 
-- **8 specialized agents**, each with clear domain
+- **9 specialized agents**, each with clear domain
 - **Orchestrator** coordinates everything
 - **Analyzer** never writes code (analysis only)
 - **Backend** and **Frontend** work in child theme only
@@ -442,10 +492,19 @@ Documentation specialist maintaining all project documentation and changelog.
 - **Validator** is final quality gate
 - **Scripter** owns scripts and catalog
 - **Documenter** owns CHANGELOG.md and documentation
+- **Legacy Initializer** onboards existing projects (forensic analysis only)
+
+### Initializer Agents (Special)
+| Initializer | Use Case |
+|-------------|----------|
+| `wordpress-initializer` | New WordPress projects from scratch |
+| `legacy-initializer` | Existing production projects being adopted |
+
+**Mutual Exclusion**: Only ONE initializer runs per project, ever.
 
 **Golden Rule**: Respect boundaries, coordinate via Orchestrator, never skip review/validation/documentation.
 
 ---
 
-**Last Updated**: 2026-01-11
+**Last Updated**: 2026-01-15
 **Maintained By**: Documenter Agent

@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(test:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(mkdir:*)",
+      "Bash(curl:*)",
+      "Bash(tar:*)",
+      "Bash(unzip:*)",
+      "Bash(python3 -m zipfile:*)",
+      "Bash(docker compose:*)",
+      "Bash(docker stats:*)",
+      "Bash(git check-ignore:*)",
+      "Bash(git add -n wp-content/themes/)",
+      "Skill(analyze-requirement)",
+      "Bash(find:*)",
+      "Bash(php -l:*)",
+      "Skill(update-docs-and-changelog)"
+    ]
+  }
+}

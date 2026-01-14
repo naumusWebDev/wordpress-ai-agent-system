@@ -98,6 +98,33 @@ All agents are defined in `/agents/*.md` and are invoked via slash commands or d
 
 ---
 
+### 9. **Legacy Initializer** (`/agents/legacy-initializer.md`)
+**Role:** Forensic analysis and onboarding of existing WordPress projects
+**Command:** `/project:run-legacy-initializer`
+**Responsibilities:**
+- Performs forensic reconnaissance of production WordPress sites
+- Detects modifications to core, themes, and plugins
+- Generates divergence reports and risk assessments
+- Installs the agent system with legacy-aware constraints
+- Creates Operating Contract for future agents
+
+**Critical Rules:**
+- **Mutually exclusive** with `wordpress-initializer` (never use both)
+- **Does NOT fix or refactor** — only detects and documents
+- **Requires backup confirmation** before execution
+- **Read-only analysis** — cannot modify existing code
+
+**Use When:**
+- Adopting an existing production WordPress site
+- Onboarding a legacy project into the agent system
+- Need to understand the true state of a WordPress installation
+
+**Do NOT Use When:**
+- Starting a fresh WordPress project (use `wordpress-initializer` instead)
+- The project has already been initialized by either initializer
+
+---
+
 ## Global System Rules
 
 ### Workflow

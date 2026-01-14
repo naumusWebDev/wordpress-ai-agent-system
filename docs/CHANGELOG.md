@@ -9,6 +9,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **Legacy Initializer Agent** - Forensic reconnaissance agent for existing WordPress production sites
+  - **Agent Definition**: `/agents/legacy-initializer.md` (~930 lines)
+  - **Slash Command**: `.claude/commands/run-legacy-initializer.md`
+  - **Purpose**: Analyze existing production WordPress sites before agent system adoption
+  - **Key Capabilities**:
+    - Detects modifications to WordPress core, themes, and plugins
+    - Generates divergence reports and risk assessments
+    - Installs agent system with legacy-aware constraints
+    - Creates Operating Contract for future agents
+    - Produces `/docs/legacy/` documentation structure
+    - Generates `legacy-profile.json` for agent consumption
+  - **Characteristics**:
+    - Read-only analysis (does not fix or refactor)
+    - Requires backup confirmation before execution
+    - 7-phase analysis workflow
+    - Mutually exclusive with `wordpress-initializer` (one or the other, not both)
+  - **Documentation Updated**:
+    - `/agents.md` - Added as Agent #9
+    - `/docs/agents/overview.md` - Added Legacy Initializer section and "Initializer Agents" category
+    - `/docs/agents/roles.md` - Full Legacy Initializer profile
+
 ### Planned
 - WordPress visual installation completion
 - Application Password generation for REST API
