@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 /**
- * WordPress REST API - Create WooCommerce Product Script
+ * WordPress REST API - Update WooCommerce Product Script
  *
- * Creates a new product in WooCommerce via REST API
+ * Updates an existing product in WooCommerce via REST API
  *
  * @version 1.0.0
  * @author Scripter Agent
@@ -17,19 +17,18 @@ const fs = require('fs');
 function parseArgs() {
   const args = process.argv.slice(2);
   const options = {
-    name: '',
-    description: '',
-    short_description: '',
-    type: 'simple',
-    regular_price: '',
-    sale_price: '',
-    sku: '',
-    stock_status: 'instock',
-    manage_stock: false,
-    stock_quantity: null,
-    categories: [],
-    tags: [],
-    images: [],
+    id: null,
+    name: null,
+    description: null,
+    short_description: null,
+    regular_price: null,
+    sale_price: null,
+    sku: null,
+    stock_status: null,
+    categories: null,
+    tags: null,
+    images: null,
+    featured_image: null,
     meta_data: [],
     file: null,
     output: null
@@ -47,6 +46,9 @@ function parseArgs() {
       const [key, value] = arg.slice(2).split('=');
 
       switch (key) {
+        case 'id':
+          options.id = parseInt(value || args[++i]);
+          break;
         case 'name':
           options.name = value || args[++i];
           break;
@@ -55,9 +57,6 @@ function parseArgs() {
           break;
         case 'short-description':
           options.short_description = value || args[++i];
-          break;
-        case 'type':
-          options.type = value || args[++i];
           break;
         case 'regular-price':
           options.regular_price = value || args[++i];
@@ -71,12 +70,6 @@ function parseArgs() {
         case 'stock-status':
           options.stock_status = value || args[++i];
           break;
-        case 'manage-stock':
-          options.manage_stock = true;
-          break;
-        case 'stock-quantity':
-          options.stock_quantity = parseInt(value || args[++i]);
-          break;
         case 'categories':
           options.categories = (value || args[++i]).split(',').map(c => parseInt(c.trim()));
           break;
@@ -84,7 +77,10 @@ function parseArgs() {
           options.tags = (value || args[++i]).split(',').map(t => parseInt(t.trim()));
           break;
         case 'images':
-          options.images = (value || args[++i]).split(',').map(img => ({ src: img.trim() }));
+          options.images = (value || args[++i]).split(',').map(id => ({ id: parseInt(id.trim()) }));
+          break;
+        case 'featured-image':
+          options.featured_image = parseInt(value || args[++i]);
           break;
         case 'file':
           options.file = value || args[++i];
@@ -98,7 +94,6 @@ function parseArgs() {
             const metaKey = key.replace('meta-', '').replace(/-/g, '_');
             const metaValue = value || args[++i];
 
-            // Try to parse as JSON for complex meta values
             let parsedValue = metaValue;
             try {
               parsedValue = JSON.parse(metaValue);
@@ -120,29 +115,27 @@ function parseArgs() {
 
 function printHelp() {
   console.log(`
-WordPress REST API - Create WooCommerce Product Script
+WordPress REST API - Update WooCommerce Product Script
 
 Usage:
-  node create-product.js [options]
+  node update-product.js --id=ID [options]
 
 Options:
-  --name=NAME                    Product name (required)
+  --id=ID                        Product ID (required)
+  --name=NAME                    Product name
   --description=DESC             Full product description (HTML allowed)
   --short-description=DESC       Short description
-  --type=TYPE                    Product type: simple, variable, grouped, external (default: simple)
   --regular-price=PRICE          Regular price
-  --sale-price=PRICE             Sale price (optional)
+  --sale-price=PRICE             Sale price
   --sku=SKU                      Stock Keeping Unit
-  --stock-status=STATUS          Stock status: instock, outofstock, onbackorder (default: instock)
-  --manage-stock                 Enable stock management
-  --stock-quantity=QTY           Stock quantity (requires --manage-stock)
+  --stock-status=STATUS          Stock status: instock, outofstock, onbackorder
   --categories=IDS               Comma-separated category IDs
   --tags=IDS                     Comma-separated tag IDs
-  --images=URLS                  Comma-separated image URLs
-  --meta-KEY=VALUE               Custom meta field (e.g., --meta-custom_field=value)
-                                 For complex values use JSON: --meta-cake_sizes='{"small":{"price":15}}'
-  --file=FILE                    Read product data from JSON file
-  --output=FILE                  Save created product info to JSON file (default: created-product.json)
+  --images=IDS                   Comma-separated media IDs for product images
+  --featured-image=ID            Media ID for featured image
+  --meta-KEY=VALUE               Update custom meta field
+  --file=FILE                    Read update data from JSON file
+  --output=FILE                  Save updated product info to JSON file
   -h, --help                     Show this help
 
 Environment Variables:
@@ -151,45 +144,26 @@ Environment Variables:
   WP_API_PASSWORD                Application Password (required)
 
 Examples:
-  # Create a simple product
-  node create-product.js \\
-    --name="Premium T-Shirt" \\
-    --description="<p>High quality cotton t-shirt</p>" \\
-    --regular-price=29.99 \\
-    --sku=TSHIRT-001
+  # Update product name and price
+  node update-product.js --id=3713 \\
+    --name="Nueva Tarta de la Abuela" \\
+    --regular-price=29.99
 
-  # Create product with categories and images
-  node create-product.js \\
-    --name="Blue Jeans" \\
-    --regular-price=59.99 \\
-    --categories=15,16 \\
-    --images="https://example.com/image1.jpg,https://example.com/image2.jpg"
+  # Add images to product
+  node update-product.js --id=3713 \\
+    --images=123,124,125 \\
+    --featured-image=123
 
-  # Create from JSON file
-  node create-product.js --file=product-data.json
-
-  # Create cake product with meta data
-  node create-product.js \\
-    --name="Chocolate Cake" \\
-    --regular-price=25.00 \\
-    --meta-is_cake_product=yes \\
-    --meta-cake_sizes='{"small":{"servings":6,"price":15},"medium":{"servings":12,"price":25},"large":{"servings":24,"price":45}}'
+  # Update from JSON file
+  node update-product.js --id=3713 --file=product-update.json
 
 JSON File Format (--file option):
   {
-    "name": "Product Name",
-    "description": "<p>Product description</p>",
-    "short_description": "Brief description",
-    "type": "simple",
-    "regular_price": "29.99",
-    "sku": "PROD-001",
-    "categories": [15, 16],
+    "name": "Updated Product Name",
+    "regular_price": "39.99",
     "images": [
-      { "src": "https://example.com/image.jpg" }
-    ],
-    "meta_data": [
-      { "key": "_is_cake_product", "value": "yes" },
-      { "key": "_cake_sizes", "value": {...} }
+      { "id": 123 },
+      { "id": 124 }
     ]
   }
 `);
@@ -205,14 +179,11 @@ function loadConfig() {
 
   if (!config.baseUrl) {
     console.error('Error: WP_API_BASE_URL environment variable is required');
-    console.error('Example: export WP_API_BASE_URL=http://organicstore.local/wp-json');
     process.exit(1);
   }
 
   if (!config.user || !config.password) {
     console.error('Error: WP_API_USER and WP_API_PASSWORD environment variables are required');
-    console.error('Example: export WP_API_USER=admin');
-    console.error('         export WP_API_PASSWORD=your_application_password');
     process.exit(1);
   }
 
@@ -220,7 +191,7 @@ function loadConfig() {
 }
 
 // Make HTTP request
-function makeRequest(url, auth, postData) {
+function makeRequest(url, auth, method, postData) {
   return new Promise((resolve, reject) => {
     const urlObj = new URL(url);
     const protocol = urlObj.protocol === 'https:' ? https : http;
@@ -231,7 +202,7 @@ function makeRequest(url, auth, postData) {
       hostname: urlObj.hostname,
       port: urlObj.port || (urlObj.protocol === 'https:' ? 443 : 80),
       path: urlObj.pathname,
-      method: 'POST',
+      method: method,
       headers: {
         'Content-Type': 'application/json',
         'Authorization': authHeader,
@@ -269,24 +240,20 @@ function makeRequest(url, auth, postData) {
   });
 }
 
-// Create product
-async function createProduct(config, productData) {
-  const url = `${config.baseUrl}/wc/v3/products`;
+// Update product
+async function updateProduct(config, productId, updateData) {
+  const url = `${config.baseUrl}/wc/v3/products/${productId}`;
   const auth = `${config.user}:${config.password}`;
 
-  console.log(`Creating product: "${productData.name}"`);
-  console.log(`Type: ${productData.type}`);
-  if (productData.regular_price) {
-    console.log(`Price: ${productData.regular_price}`);
-  }
+  console.log(`Updating product ID: ${productId}`);
 
-  const payload = JSON.stringify(productData);
+  const payload = JSON.stringify(updateData);
 
   try {
-    const result = await makeRequest(url, auth, payload);
+    const result = await makeRequest(url, auth, 'PUT', payload);
     return result;
   } catch (error) {
-    throw new Error(`Failed to create product: ${error.message}`);
+    throw new Error(`Failed to update product: ${error.message}`);
   }
 }
 
@@ -301,9 +268,8 @@ function saveResult(result, outputFile) {
     regular_price: result.regular_price,
     sku: result.sku,
     stock_status: result.stock_status,
-    date_created: result.date_created,
-    categories: result.categories,
-    tags: result.tags
+    images: result.images,
+    date_modified: result.date_modified
   };
 
   fs.writeFileSync(outputFile, JSON.stringify(data, null, 2));
@@ -316,66 +282,66 @@ async function main() {
     const options = parseArgs();
     const config = loadConfig();
 
-    let productData;
+    if (!options.id) {
+      console.error('Error: --id is required');
+      process.exit(1);
+    }
+
+    let updateData = {};
 
     // Load from file or use command line args
     if (options.file) {
-      console.log(`Loading product data from: ${options.file}`);
+      console.log(`Loading update data from: ${options.file}`);
       const fileContent = fs.readFileSync(options.file, 'utf8');
-      productData = JSON.parse(fileContent);
+      updateData = JSON.parse(fileContent);
     } else {
-      if (!options.name) {
-        console.error('Error: --name is required when not using --file');
-        process.exit(1);
+      // Build update data from command line options
+      if (options.name !== null) updateData.name = options.name;
+      if (options.description !== null) updateData.description = options.description;
+      if (options.short_description !== null) updateData.short_description = options.short_description;
+      if (options.regular_price !== null) updateData.regular_price = options.regular_price;
+      if (options.sale_price !== null) updateData.sale_price = options.sale_price;
+      if (options.sku !== null) updateData.sku = options.sku;
+      if (options.stock_status !== null) updateData.stock_status = options.stock_status;
+      if (options.categories !== null) {
+        updateData.categories = options.categories.map(id => ({ id }));
       }
-
-      productData = {
-        name: options.name,
-        type: options.type,
-        status: 'publish'
-      };
-
-      if (options.description) productData.description = options.description;
-      if (options.short_description) productData.short_description = options.short_description;
-      if (options.regular_price) productData.regular_price = options.regular_price;
-      if (options.sale_price) productData.sale_price = options.sale_price;
-      if (options.sku) productData.sku = options.sku;
-      if (options.stock_status) productData.stock_status = options.stock_status;
-      if (options.manage_stock) {
-        productData.manage_stock = true;
-        if (options.stock_quantity !== null) {
-          productData.stock_quantity = options.stock_quantity;
-        }
+      if (options.tags !== null) {
+        updateData.tags = options.tags.map(id => ({ id }));
       }
-      if (options.categories.length > 0) {
-        productData.categories = options.categories.map(id => ({ id }));
+      if (options.images !== null) {
+        updateData.images = options.images;
       }
-      if (options.tags.length > 0) {
-        productData.tags = options.tags.map(id => ({ id }));
-      }
-      if (options.images.length > 0) {
-        productData.images = options.images;
+      if (options.featured_image !== null) {
+        updateData.images = updateData.images || [];
+        // Ensure featured image is first
+        updateData.images = [{ id: options.featured_image }, ...updateData.images.filter(img => img.id !== options.featured_image)];
       }
       if (options.meta_data.length > 0) {
-        productData.meta_data = options.meta_data;
+        updateData.meta_data = options.meta_data;
+      }
+
+      if (Object.keys(updateData).length === 0) {
+        console.error('Error: No update fields provided');
+        process.exit(1);
       }
     }
 
-    // Create the product
-    const result = await createProduct(config, productData);
+    // Update the product
+    const result = await updateProduct(config, options.id, updateData);
 
-    console.log('\n✓ Product created successfully!');
+    console.log('\n✓ Product updated successfully!');
     console.log(`  ID: ${result.id}`);
     console.log(`  Name: ${result.name}`);
-    console.log(`  Type: ${result.type}`);
     console.log(`  Price: ${result.price}`);
     console.log(`  Link: ${result.permalink}`);
+    if (result.images && result.images.length > 0) {
+      console.log(`  Images: ${result.images.length} image(s)`);
+    }
 
     // Save result
-    const outputFile = options.output || 'created-product.json';
+    const outputFile = options.output || 'updated-product.json';
     saveResult(result, outputFile);
-
-    console.log('\nNote: To delete this product, use WooCommerce admin or REST API DELETE request');
 
   } catch (error) {
     console.error('\n✗ Error:', error.message);

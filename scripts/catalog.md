@@ -387,6 +387,197 @@ See example JSON files in `/scripts/wp-api/examples/` (if available)
   - Meta data support for custom configurations
   - JSON file input support
 
+### upload-media.js
+
+**Purpose**: Upload media files to WordPress Media Library via REST API
+
+**Location**: `/scripts/wp-api/upload-media.js`
+
+**Version**: 1.0.0
+
+**Language**: Node.js
+
+**Prerequisites**:
+- Node.js 14+ (uses built-in modules only)
+- WordPress REST API enabled
+- User with media upload permissions
+- Application Password for authentication
+
+**Environment Variables**:
+- `WP_API_BASE_URL` - WordPress REST API base URL
+- `WP_API_USER` - WordPress username with upload_files capability
+- `WP_API_PASSWORD` - Application Password
+
+**Usage**:
+```bash
+node scripts/wp-api/upload-media.js [options]
+
+Options:
+  --file=PATH                Local file path to upload
+  --url=URL                  Remote URL to download and upload
+  --title=TITLE              Media title
+  --alt-text=TEXT            Alternative text for images
+  --caption=TEXT             Media caption
+  --description=TEXT         Media description
+  --output=FILE              Save uploaded media info to JSON file
+  -h, --help                 Show help
+```
+
+**Examples**:
+```bash
+# Upload local file
+node scripts/wp-api/upload-media.js \
+  --file=/path/to/image.jpg \
+  --title="Product Image" \
+  --alt-text="Beautiful product photo"
+
+# Upload from URL (Pexels, Unsplash, etc.)
+node scripts/wp-api/upload-media.js \
+  --url=https://images.pexels.com/photos/140831/pexels-photo-140831.jpeg \
+  --title="Tarta de la Abuela" \
+  --alt-text="Deliciosa tarta casera"
+
+# Upload with full metadata
+node scripts/wp-api/upload-media.js \
+  --file=cake.jpg \
+  --title="Tarta de la Abuela" \
+  --alt-text="Tarta casera tradicional" \
+  --caption="Tarta tradicional de la abuela" \
+  --description="Imagen para el producto Tarta de la Abuela"
+```
+
+**Output**:
+- Uploads file to WordPress Media Library
+- Generates `uploaded-media.json` with:
+  - Media ID
+  - Title
+  - Source URL
+  - Media type and MIME type
+  - Alt text
+  - Upload date
+
+**Notes**:
+- No dependencies required - uses only Node.js built-in modules
+- Supports local files and remote URLs
+- Automatically downloads files from URLs before uploading
+- Follows redirects when downloading from URLs
+- Supports images (JPEG, PNG, GIF, WebP, SVG), PDFs, videos, and audio
+- Recommended sources for free images: Pexels, Unsplash, Pixabay
+- All image URLs from Pexels work: `https://images.pexels.com/photos/[ID]/[filename].jpeg`
+
+**Change Log**:
+- v1.0.0 (2026-01-21) - Initial version
+  - Upload from local file or remote URL
+  - Full metadata support
+  - Multipart form data upload
+
+### update-product.js
+
+**Purpose**: Update an existing WooCommerce product via REST API
+
+**Location**: `/scripts/wp-api/update-product.js`
+
+**Version**: 1.0.0
+
+**Language**: Node.js
+
+**Prerequisites**:
+- Node.js 14+
+- WooCommerce plugin installed
+- User with product edit permissions
+- Application Password
+
+**Environment Variables**:
+- `WP_API_BASE_URL` - WordPress REST API base URL
+- `WP_API_USER` - WordPress username
+- `WP_API_PASSWORD` - Application Password
+
+**Usage**:
+```bash
+node scripts/wp-api/update-product.js --id=ID [options]
+
+Options:
+  --id=ID                        Product ID (required)
+  --name=NAME                    Update product name
+  --description=DESC             Update description
+  --regular-price=PRICE          Update regular price
+  --images=IDS                   Comma-separated media IDs for images
+  --featured-image=ID            Set featured image (media ID)
+  --categories=IDS               Update categories
+  --tags=IDS                     Update tags
+  --meta-KEY=VALUE               Update custom meta field
+  --file=FILE                    Read update data from JSON file
+```
+
+**Examples**:
+```bash
+# Update product name and price
+node scripts/wp-api/update-product.js --id=3713 \
+  --name="Tarta Premium de la Abuela" \
+  --regular-price=35.00
+
+# Add images to product
+node scripts/wp-api/update-product.js --id=3713 \
+  --images=3715,3716,3717 \
+  --featured-image=3715
+
+# Update from JSON file
+node scripts/wp-api/update-product.js --id=3713 --file=update.json
+```
+
+**Change Log**:
+- v1.0.0 (2026-01-21) - Initial version
+
+### update-post.js
+
+**Purpose**: Update an existing WordPress post via REST API
+
+**Location**: `/scripts/wp-api/update-post.js`
+
+**Version**: 1.0.0
+
+**Language**: Node.js
+
+**Prerequisites**:
+- Node.js 14+
+- User with post edit permissions
+- Application Password
+
+**Environment Variables**:
+- `WP_API_BASE_URL` - WordPress REST API base URL
+- `WP_API_USER` - WordPress username
+- `WP_API_PASSWORD` - Application Password
+
+**Usage**:
+```bash
+node scripts/wp-api/update-post.js --id=ID [options]
+
+Options:
+  --id=ID                        Post ID (required)
+  --title=TITLE                  Update post title
+  --content=CONTENT              Update post content
+  --featured-media=ID            Set featured image (media ID)
+  --status=STATUS                Update status (draft, publish, etc.)
+  --file=FILE                    Read update data from JSON file
+```
+
+**Examples**:
+```bash
+# Update post title
+node scripts/wp-api/update-post.js --id=3712 \
+  --title="Nuevo título"
+
+# Add featured image
+node scripts/wp-api/update-post.js --id=3712 \
+  --featured-media=3715
+
+# Update from JSON file
+node scripts/wp-api/update-post.js --id=3712 --file=update.json
+```
+
+**Change Log**:
+- v1.0.0 (2026-01-21) - Initial version
+
 ---
 
 ## User Management
@@ -436,16 +627,16 @@ const posts = await api.getPosts({ per_page: 100 });
 
 ## Script Statistics
 
-**Total Scripts**: 2
+**Total Scripts**: 5
 **By Category**:
-- Content Management: 2
+- Content Management: 5
 - User Management: 0
 - Media Management: 0
 - Data Operations: 0
 - Utilities: 0
 
-**Last Script Added**: create-product.js (2026-01-21)
-**Last Script Modified**: create-product.js (2026-01-21)
+**Last Script Added**: update-post.js (2026-01-21)
+**Last Script Modified**: update-post.js (2026-01-21)
 
 ---
 
@@ -469,6 +660,17 @@ const posts = await api.getPosts({ per_page: 100 });
 ## Change History
 
 ### 2026-01-21
+- Added `upload-media.js` - Upload media files to WordPress Media Library
+  - Upload from local file or remote URL
+  - Supports Pexels, Unsplash, and other free image sources
+  - Full metadata support (title, alt text, caption, description)
+- Added `update-product.js` - Update existing WooCommerce products
+  - Update any product field (name, price, description, etc.)
+  - Add/update product images
+  - Set featured image
+- Added `update-post.js` - Update existing WordPress posts
+  - Update title, content, status
+  - Set featured image
 - Added `create-product.js` - Create WooCommerce products via REST API
   - Support for simple, variable, grouped, and external products
   - Full meta data support for custom configurations (e.g., cake configurator)

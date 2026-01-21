@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 /**
- * WordPress REST API - Create Post Script
+ * WordPress REST API - Update Post Script
  *
- * Creates a new post in WordPress via REST API
+ * Updates an existing post in WordPress via REST API
  *
  * @version 1.0.0
  * @author Scripter Agent
@@ -12,20 +12,19 @@
 const https = require('https');
 const http = require('http');
 const fs = require('fs');
-const path = require('path');
 
 // Parse command line arguments
 function parseArgs() {
   const args = process.argv.slice(2);
   const options = {
-    title: '',
-    content: '',
-    status: 'draft',
-    categories: [],
-    tags: [],
-    excerpt: '',
+    id: null,
+    title: null,
+    content: null,
+    excerpt: null,
+    status: null,
+    categories: null,
+    tags: null,
     featured_media: null,
-    format: 'standard',
     meta: {},
     file: null,
     output: null
@@ -43,11 +42,17 @@ function parseArgs() {
       const [key, value] = arg.slice(2).split('=');
 
       switch (key) {
+        case 'id':
+          options.id = parseInt(value || args[++i]);
+          break;
         case 'title':
           options.title = value || args[++i];
           break;
         case 'content':
           options.content = value || args[++i];
+          break;
+        case 'excerpt':
+          options.excerpt = value || args[++i];
           break;
         case 'status':
           options.status = value || args[++i];
@@ -58,14 +63,8 @@ function parseArgs() {
         case 'tags':
           options.tags = (value || args[++i]).split(',').map(t => parseInt(t.trim()));
           break;
-        case 'excerpt':
-          options.excerpt = value || args[++i];
-          break;
         case 'featured-media':
           options.featured_media = parseInt(value || args[++i]);
-          break;
-        case 'format':
-          options.format = value || args[++i];
           break;
         case 'file':
           options.file = value || args[++i];
@@ -88,54 +87,48 @@ function parseArgs() {
 
 function printHelp() {
   console.log(`
-WordPress REST API - Create Post Script
+WordPress REST API - Update Post Script
 
 Usage:
-  node create-post.js [options]
+  node update-post.js --id=ID [options]
 
 Options:
-  --title=TITLE              Post title (required)
-  --content=CONTENT          Post content in HTML
-  --status=STATUS            Post status: draft, publish, pending, private (default: draft)
-  --categories=IDS           Comma-separated category IDs (e.g., "1,3,5")
-  --tags=IDS                 Comma-separated tag IDs
-  --excerpt=TEXT             Post excerpt
-  --featured-media=ID        Featured image media ID
-  --format=FORMAT            Post format: standard, aside, gallery, link, image, quote, status, video, audio, chat
-  --meta-KEY=VALUE           Custom meta field (e.g., --meta-custom_field=value)
-  --file=FILE                Read post data from JSON file
-  --output=FILE              Save created post info to JSON file (default: created-post.json)
-  -h, --help                 Show this help
+  --id=ID                        Post ID (required)
+  --title=TITLE                  Post title
+  --content=CONTENT              Post content in HTML
+  --excerpt=TEXT                 Post excerpt
+  --status=STATUS                Post status: draft, publish, pending, private
+  --categories=IDS               Comma-separated category IDs
+  --tags=IDS                     Comma-separated tag IDs
+  --featured-media=ID            Featured image media ID
+  --meta-KEY=VALUE               Update custom meta field
+  --file=FILE                    Read update data from JSON file
+  --output=FILE                  Save updated post info to JSON file
+  -h, --help                     Show this help
 
 Environment Variables:
-  WP_API_BASE_URL            WordPress REST API base URL (required)
-  WP_API_USER                WordPress username (required)
-  WP_API_PASSWORD            Application Password or regular password (required)
+  WP_API_BASE_URL                WordPress REST API base URL (required)
+  WP_API_USER                    WordPress username (required)
+  WP_API_PASSWORD                Application Password (required)
 
 Examples:
-  # Create a simple draft post
-  node create-post.js --title="My Post" --content="<p>Hello World</p>"
+  # Update post title and content
+  node update-post.js --id=3712 \\
+    --title="Nuevo título" \\
+    --content="<p>Nuevo contenido</p>"
 
-  # Create and publish a post with categories
-  node create-post.js --title="News" --content="<p>Content</p>" --status=publish --categories=1,3
+  # Add featured image to post
+  node update-post.js --id=3712 --featured-media=123
 
-  # Create from JSON file
-  node create-post.js --file=post-data.json
-
-  # Create with custom meta
-  node create-post.js --title="Product" --content="<p>Description</p>" --meta-price=29.99
+  # Update from JSON file
+  node update-post.js --id=3712 --file=post-update.json
 
 JSON File Format (--file option):
   {
-    "title": "Post Title",
-    "content": "<p>Post content in HTML</p>",
-    "status": "publish",
-    "categories": [1, 3],
-    "tags": [5, 7],
-    "excerpt": "Post excerpt",
-    "meta": {
-      "custom_field": "value"
-    }
+    "title": "Updated Post Title",
+    "content": "<p>Updated content</p>",
+    "featured_media": 123,
+    "status": "publish"
   }
 `);
 }
@@ -150,14 +143,11 @@ function loadConfig() {
 
   if (!config.baseUrl) {
     console.error('Error: WP_API_BASE_URL environment variable is required');
-    console.error('Example: export WP_API_BASE_URL=http://organicstore.local/wp-json');
     process.exit(1);
   }
 
   if (!config.user || !config.password) {
     console.error('Error: WP_API_USER and WP_API_PASSWORD environment variables are required');
-    console.error('Example: export WP_API_USER=admin');
-    console.error('         export WP_API_PASSWORD=your_application_password');
     process.exit(1);
   }
 
@@ -165,7 +155,7 @@ function loadConfig() {
 }
 
 // Make HTTP request
-function makeRequest(url, auth, postData) {
+function makeRequest(url, auth, method, postData) {
   return new Promise((resolve, reject) => {
     const urlObj = new URL(url);
     const protocol = urlObj.protocol === 'https:' ? https : http;
@@ -176,7 +166,7 @@ function makeRequest(url, auth, postData) {
       hostname: urlObj.hostname,
       port: urlObj.port || (urlObj.protocol === 'https:' ? 443 : 80),
       path: urlObj.pathname,
-      method: 'POST',
+      method: method,
       headers: {
         'Content-Type': 'application/json',
         'Authorization': authHeader,
@@ -214,21 +204,20 @@ function makeRequest(url, auth, postData) {
   });
 }
 
-// Create post
-async function createPost(config, postData) {
-  const url = `${config.baseUrl}/wp/v2/posts`;
+// Update post
+async function updatePost(config, postId, updateData) {
+  const url = `${config.baseUrl}/wp/v2/posts/${postId}`;
   const auth = `${config.user}:${config.password}`;
 
-  console.log(`Creating post: "${postData.title}"`);
-  console.log(`Status: ${postData.status}`);
+  console.log(`Updating post ID: ${postId}`);
 
-  const payload = JSON.stringify(postData);
+  const payload = JSON.stringify(updateData);
 
   try {
-    const result = await makeRequest(url, auth, payload);
+    const result = await makeRequest(url, auth, 'PUT', payload);
     return result;
   } catch (error) {
-    throw new Error(`Failed to create post: ${error.message}`);
+    throw new Error(`Failed to update post: ${error.message}`);
   }
 }
 
@@ -239,11 +228,8 @@ function saveResult(result, outputFile) {
     title: result.title.rendered,
     link: result.link,
     status: result.status,
-    date: result.date,
-    modified: result.modified,
-    author: result.author,
-    categories: result.categories,
-    tags: result.tags
+    featured_media: result.featured_media,
+    date_modified: result.modified
   };
 
   fs.writeFileSync(outputFile, JSON.stringify(data, null, 2));
@@ -256,48 +242,50 @@ async function main() {
     const options = parseArgs();
     const config = loadConfig();
 
-    let postData;
+    if (!options.id) {
+      console.error('Error: --id is required');
+      process.exit(1);
+    }
+
+    let updateData = {};
 
     // Load from file or use command line args
     if (options.file) {
-      console.log(`Loading post data from: ${options.file}`);
+      console.log(`Loading update data from: ${options.file}`);
       const fileContent = fs.readFileSync(options.file, 'utf8');
-      postData = JSON.parse(fileContent);
+      updateData = JSON.parse(fileContent);
     } else {
-      if (!options.title) {
-        console.error('Error: --title is required when not using --file');
+      // Build update data from command line options
+      if (options.title !== null) updateData.title = options.title;
+      if (options.content !== null) updateData.content = options.content;
+      if (options.excerpt !== null) updateData.excerpt = options.excerpt;
+      if (options.status !== null) updateData.status = options.status;
+      if (options.categories !== null) updateData.categories = options.categories;
+      if (options.tags !== null) updateData.tags = options.tags;
+      if (options.featured_media !== null) updateData.featured_media = options.featured_media;
+      if (Object.keys(options.meta).length > 0) updateData.meta = options.meta;
+
+      if (Object.keys(updateData).length === 0) {
+        console.error('Error: No update fields provided');
         process.exit(1);
       }
-
-      postData = {
-        title: options.title,
-        content: options.content,
-        status: options.status
-      };
-
-      if (options.categories.length > 0) postData.categories = options.categories;
-      if (options.tags.length > 0) postData.tags = options.tags;
-      if (options.excerpt) postData.excerpt = options.excerpt;
-      if (options.featured_media) postData.featured_media = options.featured_media;
-      if (options.format) postData.format = options.format;
-      if (Object.keys(options.meta).length > 0) postData.meta = options.meta;
     }
 
-    // Create the post
-    const result = await createPost(config, postData);
+    // Update the post
+    const result = await updatePost(config, options.id, updateData);
 
-    console.log('\n✓ Post created successfully!');
+    console.log('\n✓ Post updated successfully!');
     console.log(`  ID: ${result.id}`);
     console.log(`  Title: ${result.title.rendered}`);
     console.log(`  Status: ${result.status}`);
     console.log(`  Link: ${result.link}`);
+    if (result.featured_media) {
+      console.log(`  Featured Media ID: ${result.featured_media}`);
+    }
 
     // Save result
-    const outputFile = options.output || 'created-post.json';
+    const outputFile = options.output || 'updated-post.json';
     saveResult(result, outputFile);
-
-    console.log('\nRollback command:');
-    console.log(`  node delete-post.js --id=${result.id}`);
 
   } catch (error) {
     console.error('\n✗ Error:', error.message);

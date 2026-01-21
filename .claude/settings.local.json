@@ -26,7 +26,12 @@
       "Bash(export WP_API_PASSWORD=\"change_this_password\")",
       "Bash(node:*)",
       "Bash(export WP_API_PASSWORD=\"UsUVann1ymdnoFYDYDi4DH3B\")",
-      "Bash(docker-compose restart:*)"
+      "Bash(docker-compose restart:*)",
+      "WebSearch",
+      "WebFetch(domain:unsplash.com)",
+      "WebFetch(domain:pixabay.com)",
+      "Bash(export WP_API_PASSWORD:*)",
+      "Bash(export WP_API_PASSWORD=\"VbeAu1M7YEebczEaEA7QYvH9\")"
     ]
   }
 }
