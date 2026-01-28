@@ -1,0 +1,76 @@
+{
+  "name": "Tarta de Manzana",
+  "type": "simple",
+  "status": "publish",
+  "description": "<h2>La clásica Tarta de Manzana</h2>\n\n<p>Nuestra deliciosa <strong>Tarta de Manzana</strong> combina la receta tradicional con manzanas frescas de la mejor calidad. Un postre clásico que nunca pasa de moda, perfecto para cualquier ocasión.</p>\n\n<h3>¿Qué hace especial nuestra Tarta de Manzana?</h3>\n\n<ul>\n<li><strong>Manzanas frescas</strong> - Utilizamos manzanas Golden y Reineta de temporada</li>\n<li><strong>Base crujiente</strong> - Masa quebrada elaborada con mantequilla de primera calidad</li>\n<li><strong>Canela natural</strong> - Un toque aromático que realza el sabor de las manzanas</li>\n<li><strong>Horneado artesanal</strong> - Cada tarta se hornea a mano hasta lograr el punto perfecto</li>\n</ul>\n\n<h3>Ingredientes principales</h3>\n\n<p>Nuestra Tarta de Manzana incluye:</p>\n<ul>\n<li>Masa quebrada de mantequilla</li>\n<li>Manzanas frescas en rodajas</li>\n<li>Canela de Ceilán natural</li>\n<li>Azúcar de caña</li>\n<li>Huevo y mantequilla frescos</li>\n<li>Un toque de limón para realzar el sabor</li>\n</ul>\n\n<h3>Perfecta para</h3>\n\n<ul>\n<li><strong>Meriendas</strong> - Acompaña perfectamente con café o té</li>\n<li><strong>Postres</strong> - Ideal para terminar una comida familiar</li>\n<li><strong>Celebraciones</strong> - Un clásico que gusta a todos</li>\n<li><strong>Regalo</strong> - Sorprende a tus seres queridos con un postre casero</li>\n</ul>\n\n<h3>Conservación</h3>\n\n<p>Para mantener la frescura y textura óptima:</p>\n<ul>\n<li>Consumir preferentemente en las primeras 3-4 días</li>\n<li>Conservar en lugar fresco y seco</li>\n<li>Puede refrigerarse para prolongar su duración</li>\n<li>Deliciosa tanto templada como fría</li>\n</ul>\n\n<h3>Sugerencia de presentación</h3>\n\n<p>Nuestra Tarta de Manzana está deliciosa:</p>\n<ul>\n<li>Con una bola de helado de vainilla</li>\n<li>Espolvoreada con azúcar glass</li>\n<li>Acompañada de nata montada</li>\n<li>Con una cucharada de crema pastelera</li>\n</ul>\n\n<h3>Personalización</h3>\n\n<p>Configura tu tarta perfecta eligiendo:</p>\n<ul>\n<li><strong>Tamaño</strong> - Pequeña (6 personas), Mediana (12 personas) o Grande (24 personas)</li>\n<li><strong>Opciones dietéticas</strong> - Vegana, sin lácteos, sin frutos secos, sin trigo o sin azúcar</li>\n</ul>\n\n<p><em>¡El sabor de la tradición en cada bocado!</em></p>",
+  "short_description": "Deliciosa Tarta de Manzana elaborada con manzanas frescas y masa quebrada de mantequilla. Horneada artesanalmente con canela natural. Un clásico irresistible que gusta a toda la familia.",
+  "regular_price": "22.00",
+  "sku": "TARTA-MANZANA-001",
+  "stock_status": "instock",
+  "categories": [],
+  "tags": [],
+  "images": [],
+  "meta_data": [
+    {
+      "key": "_is_cake_product",
+      "value": "yes"
+    },
+    {
+      "key": "_cake_sizes",
+      "value": {
+        "small": {
+          "servings": 6,
+          "price": "14.00"
+        },
+        "medium": {
+          "servings": 12,
+          "price": "22.00"
+        },
+        "large": {
+          "servings": 24,
+          "price": "40.00"
+        }
+      }
+    },
+    {
+      "key": "_cake_options",
+      "value": [
+        {
+          "key": "vegan",
+          "label": "Vegana",
+          "modifier": "4.00"
+        },
+        {
+          "key": "dairy-free",
+          "label": "Sin lácteos",
+          "modifier": "2.50"
+        },
+        {
+          "key": "nut-free",
+          "label": "Sin frutos secos",
+          "modifier": "0.00"
+        },
+        {
+          "key": "wheat-free",
+          "label": "Sin trigo (sin gluten)",
+          "modifier": "3.00"
+        },
+        {
+          "key": "sugar-free",
+          "label": "Sin azúcar (con edulcorante)",
+          "modifier": "3.50"
+        },
+        {
+          "key": "organic",
+          "label": "Ingredientes ecológicos",
+          "modifier": "6.00"
+        },
+        {
+          "key": "extra-cinnamon",
+          "label": "Extra de canela",
+          "modifier": "1.00"
+        }
+      ]
+    }
+  ]
+}

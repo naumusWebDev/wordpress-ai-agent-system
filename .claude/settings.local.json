@@ -1,0 +1,37 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(test:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(mkdir:*)",
+      "Bash(curl:*)",
+      "Bash(tar:*)",
+      "Bash(unzip:*)",
+      "Bash(python3 -m zipfile:*)",
+      "Bash(docker compose:*)",
+      "Bash(docker stats:*)",
+      "Bash(git check-ignore:*)",
+      "Bash(git add -n wp-content/themes/)",
+      "Skill(analyze-requirement)",
+      "Bash(find:*)",
+      "Bash(php -l:*)",
+      "Skill(update-docs-and-changelog)",
+      "Bash(docker-compose ps:*)",
+      "Bash(docker-compose exec:*)",
+      "Skill(create-wp-api-script)",
+      "Bash(chmod:*)",
+      "Bash(export WP_API_BASE_URL=\"http://organicstore.local/wp-json\")",
+      "Bash(export WP_API_USER=\"admin\")",
+      "Bash(export WP_API_PASSWORD=\"change_this_password\")",
+      "Bash(node:*)",
+      "Bash(export WP_API_PASSWORD=\"UsUVann1ymdnoFYDYDi4DH3B\")",
+      "Bash(docker-compose restart:*)",
+      "WebSearch",
+      "WebFetch(domain:unsplash.com)",
+      "WebFetch(domain:pixabay.com)",
+      "Bash(export WP_API_PASSWORD:*)",
+      "Bash(export WP_API_PASSWORD=\"VbeAu1M7YEebczEaEA7QYvH9\")"
+    ]
+  }
+}

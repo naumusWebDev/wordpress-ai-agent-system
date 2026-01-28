@@ -1,0 +1,52 @@
+{
+  "id": 3719,
+  "name": "Tarta de Manzana",
+  "permalink": "http://organicstore.local/product/tarta-de-manzana/",
+  "type": "simple",
+  "price": "22.00",
+  "regular_price": "22.00",
+  "sku": "TARTA-MANZANA-001",
+  "stock_status": "instock",
+  "images": [
+    {
+      "id": 3720,
+      "date_created": "2026-01-21T15:49:43",
+      "date_created_gmt": "2026-01-21T15:49:43",
+      "date_modified": "2026-01-21T15:50:22",
+      "date_modified_gmt": "2026-01-21T15:50:22",
+      "src": "http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-7945935-scaled.jpeg",
+      "name": "Tarta de Manzana &#8211; Imagen Principal",
+      "alt": "Deliciosa tarta de manzana casera con canela",
+      "srcset": "http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-7945935-scaled.jpeg 1920w, http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-7945935-225x300.jpeg 225w, http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-7945935-768x1024.jpeg 768w, http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-7945935-1152x1536.jpeg 1152w, http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-7945935-1536x2048.jpeg 1536w, http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-7945935-1170x1560.jpeg 1170w, http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-7945935-870x1160.jpeg 870w, http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-7945935-370x493.jpeg 370w, http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-7945935-300x400.jpeg 300w, http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-7945935-600x800.jpeg 600w",
+      "sizes": "(max-width: 1920px) 100vw, 1920px",
+      "thumbnail": "http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-7945935-250x308.jpeg"
+    },
+    {
+      "id": 3721,
+      "date_created": "2026-01-21T15:49:56",
+      "date_created_gmt": "2026-01-21T15:49:56",
+      "date_modified": "2026-01-21T15:49:56",
+      "date_modified_gmt": "2026-01-21T15:49:56",
+      "src": "http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-5949888-scaled.jpeg",
+      "name": "Tarta de Manzana &#8211; Imagen 2",
+      "alt": "Vista superior de tarta de manzana con rodajas de manzana",
+      "srcset": "http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-5949888-scaled.jpeg 1707w, http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-5949888-200x300.jpeg 200w, http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-5949888-683x1024.jpeg 683w, http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-5949888-768x1152.jpeg 768w, http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-5949888-1024x1536.jpeg 1024w, http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-5949888-1365x2048.jpeg 1365w, http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-5949888-1170x1755.jpeg 1170w, http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-5949888-870x1305.jpeg 870w, http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-5949888-370x555.jpeg 370w, http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-5949888-300x450.jpeg 300w, http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-5949888-600x900.jpeg 600w",
+      "sizes": "(max-width: 1707px) 100vw, 1707px",
+      "thumbnail": "http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-5949888-250x308.jpeg"
+    },
+    {
+      "id": 3722,
+      "date_created": "2026-01-21T15:50:07",
+      "date_created_gmt": "2026-01-21T15:50:07",
+      "date_modified": "2026-01-21T15:50:07",
+      "date_modified_gmt": "2026-01-21T15:50:07",
+      "src": "http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-6210748-scaled.jpeg",
+      "name": "Tarta de Manzana &#8211; Imagen 3",
+      "alt": "Porción de tarta de manzana en plato",
+      "srcset": "http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-6210748-scaled.jpeg 1707w, http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-6210748-200x300.jpeg 200w, http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-6210748-683x1024.jpeg 683w, http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-6210748-768x1152.jpeg 768w, http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-6210748-1024x1536.jpeg 1024w, http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-6210748-1365x2048.jpeg 1365w, http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-6210748-1170x1755.jpeg 1170w, http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-6210748-870x1305.jpeg 870w, http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-6210748-370x555.jpeg 370w, http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-6210748-300x450.jpeg 300w, http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-6210748-600x900.jpeg 600w",
+      "sizes": "(max-width: 1707px) 100vw, 1707px",
+      "thumbnail": "http://organicstore.local/wp-content/uploads/2026/01/pexels-photo-6210748-250x308.jpeg"
+    }
+  ],
+  "date_modified": "2026-01-21T15:50:22"
+}
