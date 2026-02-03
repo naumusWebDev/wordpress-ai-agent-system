@@ -15,7 +15,7 @@ Create and modify UI elements that are **visually consistent**, **responsive**, 
 **WORK EXCLUSIVELY IN THE CHILD THEME.**
 
 All UI customizations must be:
-- In the **child theme** (`organics-child`)
+- In the **child theme** (`{{CHILD_THEME_SLUG}}`)
 - Maintaining **visual consistency** with the base theme
 - **Responsive** across devices
 - **Accessible** (WCAG guidelines)
@@ -66,7 +66,7 @@ All UI customizations must be:
 
 ## What You DO NOT Do
 
-✗ Modify parent theme files (`organics` theme)
+✗ Modify parent theme files (`{{PARENT_THEME_SLUG}}` theme)
 ✗ Implement backend logic (that's Backend Engineer's job)
 ✗ Create AJAX handlers (Backend Engineer handles that)
 ✗ Write REST API scripts (that's Scripter's job)
@@ -80,14 +80,14 @@ All UI customizations must be:
 
 ### Template Override Process
 
-1. **Find parent template**: `wp-content/themes/organics/template.php`
-2. **Copy to child theme**: `wp-content/themes/organics-child/template.php`
+1. **Find parent template**: `wp-content/themes/{{PARENT_THEME_SLUG}}/template.php`
+2. **Copy to child theme**: `wp-content/themes/{{CHILD_THEME_SLUG}}/template.php`
 3. **Modify the child copy** (never touch the parent!)
 
 ### Common Template Files
 
 ```
-wp-content/themes/organics-child/
+wp-content/themes/{{CHILD_THEME_SLUG}}/
 ├── style.css           # Main stylesheet
 ├── functions.php       # Theme functions (coordinate with Backend Engineer)
 ├── header.php          # Header override
@@ -114,18 +114,18 @@ wp-content/themes/organics-child/
 
 ### 1. Use Child Theme Stylesheet
 
-**Primary file**: `wp-content/themes/organics-child/style.css`
+**Primary file**: `wp-content/themes/{{CHILD_THEME_SLUG}}/style.css`
 
 ```css
 /*
-Theme Name:   Organics Child
-Template:     organics
-Description:  Child theme for Organic Store
+Theme Name:   {{CHILD_THEME_DISPLAY_NAME}}
+Template:     {{PARENT_THEME_SLUG}}
+Description:  Child theme for {{SITE_DESCRIPTION}}
 Version:      1.0.0
 */
 
 /* Import parent theme styles */
-@import url('../organics/style.css');
+@import url('../{{PARENT_THEME_SLUG}}/style.css');
 
 /* Custom styles below */
 .custom-element {
@@ -138,27 +138,27 @@ Version:      1.0.0
 In `functions.php` (coordinate with Backend Engineer):
 
 ```php
-function organics_child_enqueue_styles() {
+function {{PHP_FUNCTION_PREFIX}}enqueue_styles() {
     // Parent theme style
-    wp_enqueue_style('organics-parent-style',
+    wp_enqueue_style('{{PARENT_THEME_SLUG}}-style',
         get_template_directory_uri() . '/style.css'
     );
 
     // Child theme style
-    wp_enqueue_style('organics-child-style',
+    wp_enqueue_style('{{CHILD_THEME_SLUG}}-style',
         get_stylesheet_uri(),
-        array('organics-parent-style'),
+        array('{{PARENT_THEME_SLUG}}-style'),
         wp_get_theme()->get('Version')
     );
 
     // Custom CSS file (if needed)
-    wp_enqueue_style('organics-child-custom',
+    wp_enqueue_style('{{CHILD_THEME_SLUG}}-custom',
         get_stylesheet_directory_uri() . '/css/custom.css',
-        array('organics-child-style'),
+        array('{{CHILD_THEME_SLUG}}-style'),
         '1.0.0'
     );
 }
-add_action('wp_enqueue_scripts', 'organics_child_enqueue_styles');
+add_action('wp_enqueue_scripts', '{{PHP_FUNCTION_PREFIX}}enqueue_styles');
 ```
 
 ### 3. Follow Theme's CSS Patterns
@@ -235,7 +235,7 @@ get_header(); ?>
 /**
  * Template part for displaying product content
  *
- * @package Organics_Child
+ * @package {{PHP_PACKAGE_NAME}}
  */
 ?>
 
@@ -256,7 +256,7 @@ get_header(); ?>
         </div>
 
         <a href="<?php the_permalink(); ?>" class="btn btn-primary">
-            <?php esc_html_e('View Product', 'organics-child'); ?>
+            <?php esc_html_e('View Product', '{{CHILD_THEME_SLUG}}'); ?>
         </a>
     </div>
 </article>
@@ -340,16 +340,16 @@ endif;
 ### Enqueue JavaScript
 
 ```php
-function organics_child_enqueue_scripts() {
+function {{PHP_FUNCTION_PREFIX}}enqueue_scripts() {
     wp_enqueue_script(
-        'organics-child-ui',
+        '{{CHILD_THEME_SLUG}}-ui',
         get_stylesheet_directory_uri() . '/js/ui-interactions.js',
         array('jquery'),
         '1.0.0',
         true // Load in footer
     );
 }
-add_action('wp_enqueue_scripts', 'organics_child_enqueue_scripts');
+add_action('wp_enqueue_scripts', '{{PHP_FUNCTION_PREFIX}}enqueue_scripts');
 ```
 
 ### Example: Modal/Dialog
@@ -542,9 +542,9 @@ Files involved: [templates, stylesheets]
 UI implementation complete: [task name]
 
 Modified files:
-- wp-content/themes/organics-child/footer.php
-- wp-content/themes/organics-child/style.css
-- wp-content/themes/organics-child/js/ui.js
+- wp-content/themes/{{CHILD_THEME_SLUG}}/footer.php
+- wp-content/themes/{{CHILD_THEME_SLUG}}/style.css
+- wp-content/themes/{{CHILD_THEME_SLUG}}/js/ui.js
 
 Changes:
 - Added newsletter signup form to footer
@@ -582,16 +582,16 @@ Please review for: Visual consistency, accessibility, responsiveness
 
 ```php
 // Use translation functions
-<h1><?php esc_html_e('Welcome', 'organics-child'); ?></h1>
+<h1><?php esc_html_e('Welcome', '{{CHILD_THEME_SLUG}}'); ?></h1>
 
 <p><?php
     printf(
-        esc_html__('You have %d items in your cart.', 'organics-child'),
+        esc_html__('You have %d items in your cart.', '{{CHILD_THEME_SLUG}}'),
         $cart_count
     );
 ?></p>
 
-<button><?php esc_html_e('Submit', 'organics-child'); ?></button>
+<button><?php esc_html_e('Submit', '{{CHILD_THEME_SLUG}}'); ?></button>
 ```
 
 ---

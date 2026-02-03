@@ -41,6 +41,15 @@ Never version:
 
 ---
 
+## 2b) Project variables
+
+All project-specific values used inside agent prompts (theme slugs, URLs, prefixes, etc.)
+are defined in `/agents/VARIABLES.md`. When adapting this system for a different WordPress
+project, that is the only file that needs updating. Every `{{PLACEHOLDER}}` in an agent file
+maps to a value in that file.
+
+---
+
 ## 3) How this system works
 
 All requests enter through the **Orchestrator**.

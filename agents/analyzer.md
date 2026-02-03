@@ -314,9 +314,9 @@ accessible on all pages.
 4. GDPR compliance needed? (checkbox for consent?)
 
 ## Current State Analysis
-- Theme: organics-child (child of organics)
-- Footer template likely in: `wp-content/themes/organics/footer.php`
-- Child theme can override: `wp-content/themes/organics-child/footer.php`
+- Theme: {{CHILD_THEME_SLUG}} (child of {{PARENT_THEME_SLUG}})
+- Footer template likely in: `wp-content/themes/{{PARENT_THEME_SLUG}}/footer.php`
+- Child theme can override: `wp-content/themes/{{CHILD_THEME_SLUG}}/footer.php`
 - No existing newsletter functionality found
 
 ## Proposed Solution (High-Level)
@@ -343,7 +343,7 @@ Copy parent theme footer.php to child theme and add newsletter form markup.
 - [ ] Form markup is semantic and accessible
 
 **Files Involved**:
-- `wp-content/themes/organics-child/footer.php` - create/modify
+- `wp-content/themes/{{CHILD_THEME_SLUG}}/footer.php` - create/modify
 
 **Verification Steps**:
 1. Visit any page on the site
@@ -366,7 +366,7 @@ Create AJAX endpoint to handle newsletter signup submissions.
 - [ ] Nonce verification for security
 
 **Files Involved**:
-- `wp-content/themes/organics-child/functions.php` - add handler
+- `wp-content/themes/{{CHILD_THEME_SLUG}}/functions.php` - add handler
 
 [...continues...]
 

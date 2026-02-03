@@ -132,7 +132,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Initial WordPress installation (latest version)
 - Docker setup with PHP 8.3 and MySQL
-- Organics parent theme and child theme
+- {{CHILD_THEME_DISPLAY_NAME}} (child of {{PARENT_THEME_SLUG}}) theme setup
 - Multi-agent system documentation
 - REST API access via Application Passwords
 - Base documentation structure
@@ -310,7 +310,7 @@ Example:
 **Example**:
 ```bash
 curl --user "admin:app_pass" \
-  "http://organicstore.local/wp-json/wp/v2/products/featured?per_page=5"
+  "{{WP_SITE_URL}}/wp-json/wp/v2/products/featured?per_page=5"
 ```
 
 **Errors**:

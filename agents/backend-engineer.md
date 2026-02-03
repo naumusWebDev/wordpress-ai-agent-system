@@ -15,7 +15,7 @@ Implement WordPress backend features that are **update-safe**, **secure**, and f
 **NEVER MODIFY THE BASE THEME OR WORDPRESS CORE.**
 
 All customizations must be:
-- In the **child theme** (`organics-child`)
+- In the **child theme** (`{{CHILD_THEME_SLUG}}`)
 - Using **hooks, filters, and actions**
 - **Reversible** and **update-safe**
 
@@ -66,7 +66,7 @@ All customizations must be:
 
 ## What You DO NOT Do
 
-✗ Modify parent theme files (`organics` theme)
+✗ Modify parent theme files (`{{PARENT_THEME_SLUG}}` theme)
 ✗ Modify WordPress core files
 ✗ Edit plugin files directly
 ✗ Create inline styles (that's Frontend Designer's job)
@@ -83,13 +83,13 @@ All customizations must be:
 
 **CORRECT**:
 ```php
-// wp-content/themes/organics-child/functions.php
+// wp-content/themes/{{CHILD_THEME_SLUG}}/functions.php
 add_action('init', 'my_custom_function');
 ```
 
 **WRONG**:
 ```php
-// wp-content/themes/organics/functions.php ❌ NEVER DO THIS
+// wp-content/themes/{{PARENT_THEME_SLUG}}/functions.php ❌ NEVER DO THIS
 add_action('init', 'my_custom_function');
 ```
 
@@ -173,9 +173,9 @@ mysqli_query($conn, "SELECT * FROM wp_posts"); ❌
 /**
  * Register custom post type for Products.
  */
-function organics_child_register_products_cpt() {
+function {{PHP_FUNCTION_PREFIX}}register_products_cpt() {
     $args = array(
-        'label'               => __('Products', 'organics-child'),
+        'label'               => __('Products', '{{CHILD_THEME_SLUG}}'),
         'public'              => true,
         'publicly_queryable'  => true,
         'show_ui'             => true,
@@ -188,7 +188,7 @@ function organics_child_register_products_cpt() {
 
     register_post_type('product', $args);
 }
-add_action('init', 'organics_child_register_products_cpt');
+add_action('init', '{{PHP_FUNCTION_PREFIX}}register_products_cpt');
 ```
 
 ### Custom Taxonomy
@@ -197,9 +197,9 @@ add_action('init', 'organics_child_register_products_cpt');
 /**
  * Register custom taxonomy for Product Categories.
  */
-function organics_child_register_product_categories() {
+function {{PHP_FUNCTION_PREFIX}}register_product_categories() {
     $args = array(
-        'label'        => __('Product Categories', 'organics-child'),
+        'label'        => __('Product Categories', '{{CHILD_THEME_SLUG}}'),
         'public'       => true,
         'hierarchical' => true, // Like categories
         'show_in_rest' => true,
@@ -208,7 +208,7 @@ function organics_child_register_product_categories() {
 
     register_taxonomy('product_category', 'product', $args);
 }
-add_action('init', 'organics_child_register_product_categories');
+add_action('init', '{{PHP_FUNCTION_PREFIX}}register_product_categories');
 ```
 
 ### AJAX Handler
@@ -217,7 +217,7 @@ add_action('init', 'organics_child_register_product_categories');
 /**
  * AJAX handler for newsletter signup.
  */
-function organics_child_handle_newsletter_signup() {
+function {{PHP_FUNCTION_PREFIX}}handle_newsletter_signup() {
     // Verify nonce
     if (!check_ajax_referer('newsletter_signup_nonce', 'nonce', false)) {
         wp_send_json_error(array('message' => 'Security check failed'));
@@ -238,8 +238,8 @@ function organics_child_handle_newsletter_signup() {
 
     wp_send_json_success(array('message' => 'Subscription successful'));
 }
-add_action('wp_ajax_newsletter_signup', 'organics_child_handle_newsletter_signup');
-add_action('wp_ajax_nopriv_newsletter_signup', 'organics_child_handle_newsletter_signup');
+add_action('wp_ajax_newsletter_signup', '{{PHP_FUNCTION_PREFIX}}handle_newsletter_signup');
+add_action('wp_ajax_nopriv_newsletter_signup', '{{PHP_FUNCTION_PREFIX}}handle_newsletter_signup');
 ```
 
 ### Custom REST API Endpoint
@@ -248,19 +248,19 @@ add_action('wp_ajax_nopriv_newsletter_signup', 'organics_child_handle_newsletter
 /**
  * Register custom REST API endpoint.
  */
-function organics_child_register_api_routes() {
-    register_rest_route('organics/v1', '/products/featured', array(
+function {{PHP_FUNCTION_PREFIX}}register_api_routes() {
+    register_rest_route('{{REST_API_NAMESPACE}}', '/products/featured', array(
         'methods'  => 'GET',
-        'callback' => 'organics_child_get_featured_products',
+        'callback' => '{{PHP_FUNCTION_PREFIX}}get_featured_products',
         'permission_callback' => '__return_true', // Or custom permission check
     ));
 }
-add_action('rest_api_init', 'organics_child_register_api_routes');
+add_action('rest_api_init', '{{PHP_FUNCTION_PREFIX}}register_api_routes');
 
 /**
  * Get featured products.
  */
-function organics_child_get_featured_products($request) {
+function {{PHP_FUNCTION_PREFIX}}get_featured_products($request) {
     $args = array(
         'post_type'      => 'product',
         'posts_per_page' => 10,
@@ -297,10 +297,10 @@ function organics_child_get_featured_products($request) {
 /**
  * Enqueue custom scripts and styles.
  */
-function organics_child_enqueue_scripts() {
+function {{PHP_FUNCTION_PREFIX}}enqueue_scripts() {
     // Enqueue script
     wp_enqueue_script(
-        'organics-child-custom',
+        '{{CHILD_THEME_SLUG}}-custom',
         get_stylesheet_directory_uri() . '/js/custom.js',
         array('jquery'),
         '1.0.0',
@@ -308,12 +308,12 @@ function organics_child_enqueue_scripts() {
     );
 
     // Localize script (pass data to JS)
-    wp_localize_script('organics-child-custom', 'organicsAjax', array(
+    wp_localize_script('{{CHILD_THEME_SLUG}}-custom', '{{JS_LOCALIZATION_OBJECT}}', array(
         'ajaxurl' => admin_url('admin-ajax.php'),
         'nonce'   => wp_create_nonce('newsletter_signup_nonce'),
     ));
 }
-add_action('wp_enqueue_scripts', 'organics_child_enqueue_scripts');
+add_action('wp_enqueue_scripts', '{{PHP_FUNCTION_PREFIX}}enqueue_scripts');
 ```
 
 ---
@@ -323,22 +323,22 @@ add_action('wp_enqueue_scripts', 'organics_child_enqueue_scripts');
 ### Where to Put Your Code
 
 **Child Theme functions.php**:
-- Path: `wp-content/themes/organics-child/functions.php`
+- Path: `wp-content/themes/{{CHILD_THEME_SLUG}}/functions.php`
 - Use for: All custom backend functionality
 
 **Custom Include Files** (if functions.php gets large):
-- Path: `wp-content/themes/organics-child/inc/custom-post-types.php`
+- Path: `wp-content/themes/{{CHILD_THEME_SLUG}}/inc/custom-post-types.php`
 - Require in functions.php:
   ```php
   require_once get_stylesheet_directory() . '/inc/custom-post-types.php';
   ```
 
 **Custom Scripts**:
-- Path: `wp-content/themes/organics-child/js/custom.js`
+- Path: `wp-content/themes/{{CHILD_THEME_SLUG}}/js/custom.js`
 - Enqueue via functions.php
 
 **NEVER**:
-- `wp-content/themes/organics/*` ❌
+- `wp-content/themes/{{PARENT_THEME_SLUG}}/*` ❌
 - `wp-admin/*` ❌
 - `wp-includes/*` ❌
 - `wp-content/plugins/plugin-name/*` ❌
@@ -396,7 +396,7 @@ wp_kses_post()   // HTML with allowed tags
 **Example: Using Transients**
 
 ```php
-function organics_child_get_popular_products() {
+function {{PHP_FUNCTION_PREFIX}}get_popular_products() {
     // Try to get from transient
     $products = get_transient('popular_products');
 
@@ -444,8 +444,8 @@ Context: [why this is needed]
 Implementation complete: [task name]
 
 Modified files:
-- wp-content/themes/organics-child/functions.php (lines X-Y)
-- wp-content/themes/organics-child/inc/custom.php (new file)
+- wp-content/themes/{{CHILD_THEME_SLUG}}/functions.php (lines X-Y)
+- wp-content/themes/{{CHILD_THEME_SLUG}}/inc/custom.php (new file)
 
 Changes:
 - [Summary of what was implemented]
@@ -489,7 +489,7 @@ Use DocBlocks for all functions:
  * @param int    $param2 Description of parameter.
  * @return bool Returns true on success, false on failure.
  */
-function organics_child_my_function($param1, $param2) {
+function {{PHP_FUNCTION_PREFIX}}my_function($param1, $param2) {
     // Function code
 }
 ```

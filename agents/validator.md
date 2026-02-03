@@ -133,10 +133,10 @@ Report:
 ## Test Environment Setup
 
 **Prerequisites**:
-- [ ] WordPress running at http://organicstore.local
+- [ ] WordPress running at {{WP_SITE_URL}}
 - [ ] Database populated with test data
 - [ ] Required plugins activated
-- [ ] Theme: organics-child
+- [ ] Theme: {{CHILD_THEME_SLUG}}
 
 **Test Data**:
 - [Description of test data needed]
@@ -371,7 +371,7 @@ Status: ✅ PASS
 **Test**: GET /wp/v2/products
 
 Method: GET
-Endpoint: http://organicstore.local/wp-json/wp/v2/products
+Endpoint: {{WP_SITE_URL}}/wp-json/wp/v2/products
 Auth: Application Password
 
 Response:
@@ -457,14 +457,14 @@ define('WP_DEBUG_DISPLAY', false);
 # Test endpoint with authentication
 curl -i \
   --user "admin:app_password_here" \
-  http://organicstore.local/wp-json/wp/v2/posts
+  {{WP_SITE_URL}}/wp-json/wp/v2/posts
 
 # Test POST request
 curl -X POST \
   --user "admin:app_password_here" \
   -H "Content-Type: application/json" \
   -d '{"title":"Test","content":"Content","status":"publish"}' \
-  http://organicstore.local/wp-json/wp/v2/posts
+  {{WP_SITE_URL}}/wp-json/wp/v2/posts
 ```
 
 ### Database Inspection
@@ -474,7 +474,7 @@ curl -X POST \
 docker compose run --rm wpcli db query "SELECT * FROM wp_posts WHERE post_type='product' LIMIT 5"
 
 # Via MySQL client
-docker compose exec db mysql -u wordpress -p organicstore
+docker compose exec db mysql -u {{DB_USER}} -p {{DB_NAME}}
 ```
 
 ---
@@ -516,7 +516,7 @@ How to include:
   "id": 123,
   "title": {"rendered": "Test Post"},
   "status": "publish",
-  "link": "http://organicstore.local/test-post"
+  "link": "{{WP_SITE_URL}}/test-post"
 }
 ```
 ```

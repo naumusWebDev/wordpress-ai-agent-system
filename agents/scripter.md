@@ -225,7 +225,7 @@ Always use `.env` for credentials:
 
 ```bash
 # .env (NEVER commit this file)
-WP_API_BASE_URL=http://organicstore.local/wp-json
+WP_API_BASE_URL={{WP_SITE_URL}}/wp-json
 WP_API_AUTH=admin:xxxx xxxx xxxx xxxx xxxx xxxx
 ```
 

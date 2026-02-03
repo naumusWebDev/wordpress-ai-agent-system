@@ -178,7 +178,7 @@ $wpdb->get_results($wpdb->prepare(
 - [ ] Child theme only (no parent theme/core modifications)
 - [ ] WordPress APIs used correctly
 - [ ] Hooks used instead of direct modifications
-- [ ] Functions prefixed properly (`organics_child_*`)
+- [ ] Functions prefixed properly (`{{PHP_FUNCTION_PREFIX}}*`)
 - [ ] Translation-ready
 - [ ] Follows WordPress Coding Standards
 
@@ -289,10 +289,10 @@ echo esc_html(sanitize_text_field($_POST['field']));
 **1. Base Theme Modifications**
 ```php
 // ❌ REJECT: Modifying parent theme
-File: wp-content/themes/organics/functions.php
+File: wp-content/themes/{{PARENT_THEME_SLUG}}/functions.php
 
 // ✅ APPROVE: Child theme only
-File: wp-content/themes/organics-child/functions.php
+File: wp-content/themes/{{CHILD_THEME_SLUG}}/functions.php
 ```
 
 **2. Missing Sanitization**
