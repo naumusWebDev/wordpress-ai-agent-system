@@ -4,6 +4,11 @@ Este documento debe ser rellenado y entregado al agente orquestador para automat
 
 ---
 
+## 0. Entorno WordPress
+- **Ruta local de instalación (o URL):**
+- **¿Instalar WordPress si no existe?** (sí/no)
+- **Parámetros de instalación (opcional):** versión, usuario admin, contraseña, email
+
 ## 1. Información General
 - **Nombre del proyecto:**
 - **Descripción breve:**
