@@ -432,8 +432,92 @@ When analyzing requirements, always consider:
 
 ---
 
+---
+
+## Análisis de Briefings Estructurados
+
+Cuando recibas un briefing del Orchestrator:
+
+### Fase 1: Extraer Requisitos
+Del briefing, extraer:
+- **Accesos**: URL, BD, tema (siempre Bricks)
+- **Páginas**: nombre, slug, estado
+- **CPTs**: nombre, slug, soporte, número de entradas
+- **Campos ACF**: por cada CPT (nombre, tipo, requerido)
+- **Plantillas Bricks**: nombres y tipos (Header, Footer, Single, Archive)
+- **Menús**: ubicaciones e items
+- **Contenido**: número de posts, categorías, temática
+
+### Fase 2: Crear Plan de Tareas
+
+**Tarea 1: Crear Estructura WordPress**
+- Asignar a: Backend Engineer
+- Crear páginas (incluir legales: privacidad, cookies, aviso legal)
+- Crear CPTs según briefing
+- Crear campos ACF según briefing
+- Prioridad: ALTA
+
+**Tarea 2: Crear Plantillas Bricks**
+- Asignar a: Backend Engineer
+- Crear plantillas VACÍAS (solo registrar, sin diseño)
+- Tipos: según briefing (Header, Footer, Single, Archive)
+- Prioridad: ALTA
+
+**Tarea 3: Configurar Menús**
+- Asignar a: Backend Engineer
+- Crear menús según briefing
+- Asignar a ubicaciones (Primary, Footer)
+- Prioridad: MEDIA
+
+**Tarea 4: Generar Contenido de Blog**
+- Asignar a: Backend Engineer
+- Generar posts según temática del briefing
+- Número: según briefing (ej: 5)
+- Categorías: según briefing
+- Prioridad: MEDIA
+
+**Tarea 5: Generar Contenido de CPT**
+- Asignar a: Backend Engineer
+- Generar entradas según temática
+- Rellenar campos ACF con valores coherentes
+- Número: según briefing
+- Prioridad: MEDIA
+
+**Tarea 6: Aplicar Configuraciones**
+- Asignar a: Backend Engineer
+- Aplicar ajustes de WordPress del briefing
+- Prioridad: BAJA
+
+**Tarea 7: Validar**
+- Asignar a: Validator
+- Verificar que todo funciona
+- Prioridad: ALTA
+
+**Tarea 8: Documentar**
+- Asignar a: Documenter
+- Actualizar CHANGELOG con cambios
+- Prioridad: MEDIA
+
+### Fase 3: Entregar Plan
+
+Formato del plan:
+```markdown
+# Plan de Ejecución: [Nombre del Proyecto del Briefing]
+
+## Resumen
+- Páginas a crear: X
+- CPTs a crear: X
+- Plantillas Bricks: X
+- Posts de blog: X
+- Entradas de CPT: X
+
+## Tareas (en orden)
+[Lista de tareas con asignación, dependencias, criterios de éxito]
+
 **Agent Type**: Analysis & Planning
 **Scope**: Requirements decomposition
 **Authority**: None (analysis only, no code changes)
 **Limitations**: Cannot write or modify code
 **Invocation**: `/project:analyze-requirement [requirement]`
+
+

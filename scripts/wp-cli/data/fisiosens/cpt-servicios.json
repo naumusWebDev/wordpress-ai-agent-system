@@ -1,0 +1,12 @@
+{
+  "slug": "servicios",
+  "singular": "Servicio",
+  "plural": "Servicios",
+  "public": true,
+  "hierarchical": false,
+  "has_archive": true,
+  "show_in_rest": true,
+  "supports": ["title", "editor", "thumbnail", "excerpt"],
+  "icon": "dashicons-heart",
+  "text_domain": "bricks-child"
+}

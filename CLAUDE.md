@@ -26,11 +26,7 @@ No agent may take irreversible actions without confirmation.
 /docs → Living documentation
 /scripts → Scripts that operate WordPress via API
 /resources → Client materials, briefs, PDFs, notes
-/wordpress → WordPress core (recommended to be versioned)
 /wp-content → Themes and plugins (uploads excluded)
-
-yaml
-Copiar código
 
 Never version:
 - `wp-content/uploads`
@@ -68,9 +64,6 @@ Reviewer
 Validator
 ↓
 Documenter (updates docs + CHANGELOG)
-
-markdown
-Copiar código
 
 The Analyzer **never touches code**.  
 The Scripter is the **only agent** that may write or modify scripts.  
@@ -127,22 +120,47 @@ All backend work must be:
 
 ## 6) WordPress API & Scripts
 
-All automated operations go through the **WordPress REST API**.
+### WP-CLI Scripts (preferred for Local WP)
 
-Scripts live in:
+For projects with direct filesystem and DB access (e.g., Local WP, Docker),
+use the **reusable WP-CLI scripts** in:
+
+```
+/scripts/wp-cli/
+```
+
+These scripts handle the full WordPress project bootstrapping:
+
+| Script | Purpose |
+|---|---|
+| `run-setup.sh` | Orchestrator — runs all steps in order |
+| `configure-wp.sh` | WordPress settings (timezone, language, permalinks) |
+| `create-pages.sh` | Create pages from JSON |
+| `create-menus.sh` | Create navigation menus from JSON |
+| `register-cpt.sh` | Register Custom Post Types in child theme |
+| `create-acf-fields.sh` | Create ACF field groups **in database** |
+| `create-bricks-templates.sh` | Create Bricks templates with conditions |
+| `create-posts.sh` | Create posts/CPT entries with ACF fields |
+
+Data files go in `/scripts/wp-cli/data/<project-name>/` (JSON).
+
+**CRITICAL RULES for WP-CLI scripts:**
+- **ACF fields MUST be created in the database** (via `create-acf-fields.sh`), NOT via `acf_add_local_field_group()` in PHP. Local field groups are not editable in the ACF admin UI.
+- **Bricks templates** require proper `_bricks_template_type` and `_bricks_template_conditions` meta. Use `create-bricks-templates.sh` to ensure correct format.
+- All scripts support `--dry-run` for safe preview.
+
+### REST API Scripts (remote access)
+
+For projects where only REST API access is available:
+
+```
 /scripts/wp-api/
+```
 
-markdown
-Copiar código
-
-The **Scripter** maintains:
-/scripts/catalog.md
-
-yaml
-Copiar código
+The **Scripter** maintains `/scripts/catalog.md`.
 
 Before creating a new script:
-- Check if one already exists
+- Check if one already exists in the catalog
 - Reuse if possible
 - Otherwise create a new one and register it
 
@@ -151,6 +169,16 @@ Scripts must:
 - Never store secrets
 - Include usage examples
 - Be logged in catalog.md
+
+### Briefing-driven project setup
+
+For new WordPress projects, a **briefing file** defines all content and structure.
+Briefings live in `/docs/wordpress-briefings/` using the template `briefing-template.md`.
+
+The recommended workflow is:
+1. Fill out the briefing with pages, menus, CPTs, ACF fields, Bricks templates, content
+2. Create JSON data files in `/scripts/wp-cli/data/<project>/` matching the briefing
+3. Run `run-setup.sh --data-dir=data/<project>` to bootstrap everything
 
 ---
 
@@ -174,11 +202,7 @@ Claude Code automatically:
 - Loads `/agents/*.md` when referenced
 - Has access to shell and filesystem (with permissions)
 
-Use slash commands from:
-.claude/commands/
-
-yaml
-Copiar código
+Use slash commands from `.claude/commands/`.
 
 Examples:
 - `/project:run-orchestrator`

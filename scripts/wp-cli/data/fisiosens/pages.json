@@ -1,0 +1,9 @@
+[
+  { "title": "Inicio",                 "slug": "inicio",              "status": "publish" },
+  { "title": "Sobre nosotros",         "slug": "sobre-nosotros",      "status": "publish" },
+  { "title": "Blog",                   "slug": "blog",                "status": "publish" },
+  { "title": "Contacto",               "slug": "contacto",            "status": "publish" },
+  { "title": "Política de privacidad", "slug": "politica-privacidad", "status": "publish" },
+  { "title": "Política de cookies",    "slug": "politica-cookies",    "status": "publish" },
+  { "title": "Aviso legal",            "slug": "aviso-legal",         "status": "publish" }
+]

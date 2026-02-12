@@ -1,0 +1,15 @@
+{
+  "blogname": "FisioSens",
+  "blogdescription": "Centro de Fisioterapia en Palma de Mallorca",
+  "timezone_string": "Europe/Madrid",
+  "date_format": "d/m/Y",
+  "time_format": "H:i",
+  "WPLANG": "es_ES",
+  "posts_per_page": "9",
+  "permalink_structure": "/%postname%/",
+  "show_on_front": "page",
+  "page_on_front_slug": "inicio",
+  "page_for_posts_slug": "blog",
+  "default_comment_status": "open",
+  "comments_on_pages": false
+}

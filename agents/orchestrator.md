@@ -342,8 +342,59 @@ Update: CHANGELOG.md + [any affected docs]
 
 ---
 
+## Registro y almacenamiento de scripts de automatización
+
+Siempre que el orquestador automatice una funcionalidad (crear páginas, CPT, menús, usuarios, etc.), debe:
+- Ejecutar la acción en WordPress según el briefing recibido.
+- Generar y guardar el script correspondiente en la carpeta scripts/wp-api/ del proyecto.
+- Documentar el uso, parámetros y propósito del script en el propio archivo y en scripts/catalog.md.
+- Garantizar que los scripts sean reutilizables y estén versionados.
+- No guardar código ni scripts dentro de la instalación de WordPress.
+
+Esto asegura trazabilidad, reutilización y control de todas las automatizaciones realizadas por el sistema de agentes.
+
+---
+
+## Recepción y Ejecución de Briefings
+
+Cuando recibas un briefing estructurado:
+
+### Paso 1: Verificar formato
+- ¿Tiene las secciones: Acceso Técnico, Estructura de Contenidos, Temática, Generación de Contenido?
+- ¿Están todos los datos necesarios?
+
+### Paso 2: Planificar ejecución
+1. Extraer datos técnicos (URL, BD, tema)
+2. Identificar estructura (páginas, CPTs, menús)
+3. Identificar plantillas Bricks a crear (vacías)
+4. Identificar contenido a generar (blog, CPTs)
+
+### Paso 3: Delegar al Analyzer
+Pasa el briefing completo al Analyzer para que:
+- Descomponga en tareas específicas
+- Asigne cada tarea al agente correcto
+- Defina orden de ejecución
+
+### Paso 4: Ejecutar plan
+Una vez el Analyzer entregue el plan:
+1. Backend Engineer → Crear estructura y contenido
+2. Validator → Verificar que todo funciona
+3. Documenter → Actualizar CHANGELOG
+
+### Paso 5: Reportar
+Informa al usuario:
+- ✅ Qué se creó
+- 📄 URLs de páginas
+- 🔧 CPTs creados
+- 📝 Contenido generado
+- 🎨 Plantillas Bricks registradas
+
+
 **Agent Type**: Coordinator
 **Scope**: Full system
 **Authority**: Task delegation and workflow management
 **Limitations**: Should not implement code (except trivial cases)
 **Invocation**: `/project:run-orchestrator [request]`
+
+---
+

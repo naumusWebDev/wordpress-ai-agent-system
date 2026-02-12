@@ -1,9 +1,15 @@
-# Theme archive
-themeforest-tGkA8NxD-organic-store-organic-food-eco-products-theme.zip
+# Theme archives (purchased themes)
+*.zip
 
 # Environment and secrets
 .env
 .env.local
+
+# Project-specific agent variables (use VARIABLES.example.md as template)
+agents/VARIABLES.md
+
+# Claude Code local settings (may contain project-specific permissions)
+.claude/settings.local.json
 
 # WordPress core files
 /wp-admin/
@@ -40,9 +46,10 @@ wp-config.php
 /wp-content/mu-plugins/*
 # Example: !/wp-content/mu-plugins/my-mu-plugin/
 
-# WordPress themes (version only child theme)
+# WordPress themes (version only child themes)
 /wp-content/themes/*
-!/wp-content/themes/organics-child/
+# Uncomment for your project's child theme:
+# !/wp-content/themes/your-child-theme/
 
 # Logs and databases
 *.log

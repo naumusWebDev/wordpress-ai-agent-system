@@ -1,0 +1,86 @@
+[
+  {
+    "title": "Rehabilitación deportiva",
+    "slug": "rehabilitacion-deportiva",
+    "post_type": "servicios",
+    "status": "publish",
+    "excerpt": "Recuperación funcional integral para deportistas amateur y profesionales en FisioSens.",
+    "content": "<h2>Rehabilitación deportiva en FisioSens</h2>\n<p>En FisioSens ofrecemos un servicio especializado de rehabilitación deportiva diseñado para atletas y deportistas de todos los niveles. Nuestro enfoque combina técnicas manuales avanzadas con ejercicio terapéutico para lograr una recuperación funcional completa.</p>\n<h3>¿En qué consiste?</h3>\n<p>El tratamiento comienza con una evaluación biomecánica exhaustiva que nos permite identificar el origen exacto de la lesión y los factores que contribuyeron a su aparición. A partir de ahí, diseñamos un plan de rehabilitación personalizado que incluye terapia manual, ejercicios de fortalecimiento progresivo, trabajo propioceptivo y readaptación al gesto deportivo específico.</p>\n<h3>Nuestro método</h3>\n<p>Trabajamos con protocolos basados en la evidencia científica más reciente, adaptando cada sesión a la evolución del paciente. Utilizamos herramientas como la ecografía musculoesquelética para monitorizar la recuperación tisular y ajustar el tratamiento en tiempo real.</p>\n<p>El objetivo final no es solo eliminar el dolor, sino devolverte a tu nivel de rendimiento previo a la lesión, minimizando el riesgo de recidiva. En FisioSens entendemos las demandas específicas de cada deporte y adaptamos la rehabilitación en consecuencia.</p>\n<p>Si has sufrido una lesión deportiva, <a href=\"/contacto\">contacta con nosotros</a> para iniciar tu proceso de recuperación.</p>",
+    "acf": {
+      "duracion_sesion": "60 minutos",
+      "precio": "55€",
+      "beneficios": "Recuperación funcional completa adaptada al deporte específico\nReducción del tiempo de inactividad deportiva\nPrevención de recidivas mediante trabajo propioceptivo\nMejora del rendimiento post-lesión\nSeguimiento ecográfico de la evolución",
+      "para_quien": "<p>Este servicio está indicado para deportistas amateur y profesionales que han sufrido lesiones musculares, articulares o tendinosas durante la práctica deportiva. Es especialmente recomendable para corredores, ciclistas, jugadores de pádel, crossfitters y tenistas.</p>\n<p>También está dirigido a personas que desean retomar la actividad física tras un periodo de inactividad prolongado y necesitan una readaptación progresiva y segura.</p>\n<p>Si practicas deporte de forma regular y has notado molestias persistentes, la rehabilitación deportiva puede ayudarte a recuperar tu nivel óptimo.</p>"
+    }
+  },
+  {
+    "title": "Punción seca",
+    "slug": "puncion-seca",
+    "post_type": "servicios",
+    "status": "publish",
+    "excerpt": "Tratamiento invasivo mínimo para puntos gatillo y dolor miofascial en FisioSens Palma.",
+    "content": "<h2>Punción seca en FisioSens</h2>\n<p>La punción seca es una técnica de fisioterapia invasiva mínima que utilizamos en FisioSens para el tratamiento de los puntos gatillo miofasciales, una de las causas más frecuentes de dolor musculoesquelético crónico.</p>\n<h3>¿Cómo funciona?</h3>\n<p>Mediante la inserción de una aguja de acupuntura estéril en el punto gatillo activo, provocamos una respuesta de espasmo local que desactiva el punto doloroso. Este mecanismo interrumpe el ciclo de dolor-espasmo-dolor y restaura la función muscular normal.</p>\n<h3>Indicaciones principales</h3>\n<p>La punción seca es especialmente eficaz en el tratamiento de contracturas persistentes, cefaleas tensionales, dolor cervical y lumbar crónico, tendinopatías y síndrome de dolor miofascial. En FisioSens la combinamos frecuentemente con terapia manual y ejercicio terapéutico para maximizar los resultados.</p>\n<p>El número de sesiones necesarias varía según la cronicidad del cuadro, pero la mayoría de nuestros pacientes experimentan una mejora significativa en las primeras 2-3 sesiones.</p>\n<p>¿Sufres dolor muscular persistente? <a href=\"/contacto\">Solicita tu cita</a> y valoraremos si la punción seca es el tratamiento adecuado para ti.</p>",
+    "acf": {
+      "duracion_sesion": "45 minutos",
+      "precio": "50€",
+      "beneficios": "Desactivación de puntos gatillo activos y latentes\nAlivio rápido del dolor muscular crónico\nMejora de la amplitud de movimiento\nReducción de contracturas persistentes\nCompatible con otros tratamientos de fisioterapia",
+      "para_quien": "<p>La punción seca está indicada para personas que sufren dolor muscular crónico o recurrente que no ha respondido adecuadamente a tratamientos convencionales. Es muy común en pacientes con contracturas cervicales, lumbares o en la musculatura del hombro.</p>\n<p>Deportistas con sobrecargas musculares frecuentes, trabajadores de oficina con dolor cervical y personas con cefaleas tensionales son candidatos ideales para esta técnica.</p>\n<p>No está recomendada para personas con fobia a las agujas, trastornos de coagulación o inmunodepresión sin supervisión médica.</p>"
+    }
+  },
+  {
+    "title": "Terapia manual osteopática",
+    "slug": "terapia-manual-osteopatica",
+    "post_type": "servicios",
+    "status": "publish",
+    "excerpt": "Terapia manual osteopática integral para el equilibrio estructural y funcional del cuerpo.",
+    "content": "<h2>Terapia manual osteopática en FisioSens</h2>\n<p>En FisioSens aplicamos técnicas de terapia manual osteopática con un enfoque integral del cuerpo humano. Esta disciplina se basa en la capacidad de autorregulación del organismo y busca restaurar el equilibrio estructural y funcional mediante manipulaciones articulares y de tejidos blandos.</p>\n<h3>Nuestro enfoque</h3>\n<p>Realizamos una valoración global del paciente, identificando disfunciones somáticas que pueden estar causando síntomas en zonas aparentemente no relacionadas. Utilizamos técnicas de alta velocidad y baja amplitud (thrust), técnicas de energía muscular, técnicas funcionales y movilizaciones articulares según las necesidades de cada caso.</p>\n<h3>Áreas de aplicación</h3>\n<p>La terapia manual osteopática es especialmente efectiva en el tratamiento de dolor de espalda, cervicalgias, cefaleas de origen cervicogénico, restricciones de movilidad articular, problemas de la ATM y disfunciones viscerales que se manifiestan como dolor referido en el aparato locomotor.</p>\n<p>En FisioSens integramos la osteopatía con otras técnicas de fisioterapia para ofrecer un abordaje completo y personalizado. <a href=\"/contacto\">Reserva tu evaluación inicial</a>.</p>",
+    "acf": {
+      "duracion_sesion": "60 minutos",
+      "precio": "55€",
+      "beneficios": "Tratamiento global que aborda la causa raíz del problema\nMejora de la movilidad articular y flexibilidad\nAlivio de dolor de espalda, cuello y articulaciones\nTécnicas no invasivas y bien toleradas\nEnfoque preventivo y correctivo",
+      "para_quien": "<p>La terapia manual osteopática está indicada para cualquier persona que sufra dolor musculoesquelético, restricciones de movilidad o desequilibrios posturales. Es especialmente beneficiosa para pacientes con dolor crónico de espalda, cervicalgias y cefaleas.</p>\n<p>También es muy recomendable para personas que buscan un enfoque preventivo, manteniendo la salud articular y muscular antes de que aparezcan síntomas. Deportistas que desean optimizar su rendimiento biomecánico también se benefician enormemente.</p>\n<p>Pacientes de todas las edades pueden recibir terapia manual osteopática, adaptando siempre las técnicas a las características individuales.</p>"
+    }
+  },
+  {
+    "title": "Fisioterapia postural y ergonómica",
+    "slug": "fisioterapia-postural-y-ergonomica",
+    "post_type": "servicios",
+    "status": "publish",
+    "excerpt": "Corrección postural y ergonomía laboral para prevenir y tratar dolores crónicos.",
+    "content": "<h2>Fisioterapia postural y ergonómica en FisioSens</h2>\n<p>En FisioSens ofrecemos un servicio especializado en la evaluación y corrección de los patrones posturales que generan dolor y disfunción musculoesquelética. Los malos hábitos posturales son una de las principales causas de dolor crónico en la población laboral actual.</p>\n<h3>Evaluación postural integral</h3>\n<p>Realizamos un análisis detallado de tu postura estática y dinámica, identificando desequilibrios musculares, asimetrías y patrones de movimiento compensatorios. Evaluamos también tu puesto de trabajo para detectar factores ergonómicos que contribuyan al problema.</p>\n<h3>Plan de tratamiento personalizado</h3>\n<p>Diseñamos un programa que combina ejercicios de fortalecimiento específico de la musculatura estabilizadora, estiramientos dirigidos, reeducación postural global y pautas ergonómicas para tu entorno laboral. Te enseñamos a integrar hábitos posturales saludables en tu rutina diaria.</p>\n<p>Nuestro objetivo es que comprendas tu cuerpo y adquieras autonomía en el cuidado de tu postura. No se trata de depender del fisioterapeuta, sino de empoderarte con las herramientas adecuadas.</p>\n<p>¿Pasas muchas horas frente al ordenador? <a href=\"/contacto\">Consulta con nuestro equipo</a> sobre nuestro programa de ergonomía laboral.</p>",
+    "acf": {
+      "duracion_sesion": "50 minutos",
+      "precio": "45€",
+      "beneficios": "Corrección de desequilibrios posturales y asimetrías\nPrevención del dolor crónico de espalda y cuello\nAsesoramiento ergonómico personalizado para tu puesto de trabajo\nPrograma de ejercicios adaptado a tu rutina diaria\nMejora de la calidad de vida y productividad laboral",
+      "para_quien": "<p>Este servicio está dirigido principalmente a trabajadores de oficina que pasan largas jornadas frente al ordenador, así como a cualquier persona cuya actividad laboral implique posturas mantenidas (conductores profesionales, dentistas, peluqueros, etc.).</p>\n<p>También es muy beneficioso para estudiantes, personas con escoliosis funcional y cualquier individuo entre 25 y 60 años que sufra dolor cervical, dorsal o lumbar relacionado con malos hábitos posturales.</p>\n<p>Si notas rigidez matutina, dolor de cabeza frecuente o fatiga muscular al final de la jornada laboral, la fisioterapia postural puede ser la solución.</p>"
+    }
+  },
+  {
+    "title": "Electroterapia y TENS",
+    "slug": "electroterapia-y-tens",
+    "post_type": "servicios",
+    "status": "publish",
+    "excerpt": "Tecnología de electroterapia avanzada para el control del dolor y la recuperación muscular.",
+    "content": "<h2>Electroterapia y TENS en FisioSens</h2>\n<p>En FisioSens utilizamos la electroterapia como herramienta complementaria dentro de nuestros protocolos de tratamiento. La estimulación eléctrica transcutánea (TENS) y otras modalidades electroterápicas nos permiten modular el dolor, favorecer la recuperación muscular y acelerar los procesos de curación tisular.</p>\n<h3>Modalidades disponibles</h3>\n<p>Contamos con equipos de TENS (estimulación nerviosa eléctrica transcutánea) para el control del dolor, EMS (estimulación muscular eléctrica) para la tonificación y prevención de atrofia muscular, corrientes interferenciales para procesos inflamatorios profundos, y ultrasonido terapéutico para lesiones de tejidos blandos.</p>\n<h3>Cuándo la utilizamos</h3>\n<p>La electroterapia no es un tratamiento aislado en FisioSens. La integramos como parte de un abordaje multimodal que incluye terapia manual, ejercicio terapéutico y educación del paciente. Su uso está siempre justificado por la evidencia clínica y las necesidades individuales de cada paciente.</p>\n<p>Es especialmente útil en las fases agudas de una lesión, cuando el dolor limita la capacidad del paciente para realizar ejercicio activo.</p>\n<p>¿Quieres saber si la electroterapia puede ayudarte? <a href=\"/contacto\">Contacta con nosotros</a> para una valoración.</p>",
+    "acf": {
+      "duracion_sesion": "45 minutos",
+      "precio": "40€",
+      "beneficios": "Control del dolor agudo y crónico sin medicación\nAceleración de la recuperación muscular post-lesión\nReducción de la inflamación profunda\nPrevención de atrofia muscular durante periodos de inmovilización\nComplemento eficaz a la terapia manual y el ejercicio",
+      "para_quien": "<p>La electroterapia está indicada para personas en fase aguda de una lesión que necesitan control del dolor para poder iniciar la rehabilitación activa. También es útil en pacientes post-quirúrgicos que requieren prevenir la atrofia muscular durante el periodo de inmovilización.</p>\n<p>Personas con dolor crónico que buscan alternativas no farmacológicas para el manejo del dolor encontrarán en el TENS una herramienta valiosa que pueden incluso utilizar en domicilio con supervisión profesional.</p>\n<p>No está indicada para personas con marcapasos, epilepsia no controlada o durante el embarazo en la zona abdominal.</p>"
+    }
+  },
+  {
+    "title": "Drenaje linfático manual",
+    "slug": "drenaje-linfatico-manual",
+    "post_type": "servicios",
+    "status": "publish",
+    "excerpt": "Drenaje linfático manual especializado para edemas, retención de líquidos y recuperación.",
+    "content": "<h2>Drenaje linfático manual en FisioSens</h2>\n<p>El drenaje linfático manual (DLM) es una técnica suave y rítmica que aplicamos en FisioSens para estimular el sistema linfático y favorecer la eliminación de líquidos y toxinas acumulados en los tejidos. Es un tratamiento especialmente indicado para linfedemas, edemas post-quirúrgicos y problemas circulatorios.</p>\n<h3>Técnica Vodder</h3>\n<p>En FisioSens trabajamos con la técnica de drenaje linfático de Vodder, reconocida internacionalmente como el gold standard en este campo. Consiste en movimientos manuales suaves, lentos y repetitivos que siguen el recorrido natural de los vasos linfáticos, favoreciendo el drenaje hacia los ganglios linfáticos.</p>\n<h3>Beneficios terapéuticos</h3>\n<p>Más allá de la reducción de edemas, el drenaje linfático tiene un efecto relajante profundo sobre el sistema nervioso, mejora la función inmunitaria y contribuye a la regeneración tisular. Es un complemento excelente en procesos de recuperación post-operatoria, especialmente tras cirugías ortopédicas y estéticas.</p>\n<p>Si sufres hinchazón en piernas, brazos o tras una intervención quirúrgica, el drenaje linfático puede ofrecerte un alivio significativo. <a href=\"/contacto\">Solicita tu primera sesión</a> en FisioSens.</p>",
+    "acf": {
+      "duracion_sesion": "60 minutos",
+      "precio": "60€",
+      "beneficios": "Reducción eficaz de edemas y linfedemas\nMejora de la circulación linfática y venosa\nEstimulación del sistema inmunitario\nEfecto relajante profundo sobre el sistema nervioso\nAceleración de la recuperación post-quirúrgica",
+      "para_quien": "<p>El drenaje linfático está especialmente indicado para personas que sufren linfedema primario o secundario, edemas post-quirúrgicos (particularmente tras cirugías oncológicas, estéticas u ortopédicas) y retención de líquidos.</p>\n<p>Es también muy beneficioso para personas con sensación de piernas cansadas e hinchadas, mujeres embarazadas con edema gestacional (a partir del segundo trimestre) y pacientes que buscan un tratamiento relajante con beneficios terapéuticos reales.</p>\n<p>Personas mayores con problemas de movilidad reducida y circulación deficiente encontrarán en el DLM un aliado para mejorar su calidad de vida.</p>"
+    }
+  }
+]

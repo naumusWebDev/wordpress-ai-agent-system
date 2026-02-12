@@ -1,0 +1,21 @@
+[
+  {
+    "name": "Menu Principal",
+    "location": "primary",
+    "items": [
+      { "title": "Inicio",          "type": "page", "slug": "inicio" },
+      { "title": "Sobre nosotros",  "type": "page", "slug": "sobre-nosotros" },
+      { "title": "Blog",            "type": "page", "slug": "blog" },
+      { "title": "Contacto",        "type": "page", "slug": "contacto" }
+    ]
+  },
+  {
+    "name": "Menu Footer",
+    "location": "footer",
+    "items": [
+      { "title": "Política de privacidad", "type": "page", "slug": "politica-privacidad" },
+      { "title": "Política de cookies",    "type": "page", "slug": "politica-cookies" },
+      { "title": "Aviso legal",            "type": "page", "slug": "aviso-legal" }
+    ]
+  }
+]

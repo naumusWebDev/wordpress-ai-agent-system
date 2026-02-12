@@ -62,7 +62,7 @@ Examples:
 
 ```bash
 # Required in .env
-WP_API_BASE_URL=http://organicstore.local/wp-json
+WP_API_BASE_URL=http://myproject.local/wp-json
 WP_API_AUTH=username:application_password
 ```
 
@@ -182,7 +182,7 @@ main();
 ```javascript
 // Basic Auth with Application Password
 const api = axios.create({
-  baseURL: 'http://organicstore.local/wp-json',
+  baseURL: 'http://myproject.local/wp-json',
   auth: {
     username: 'admin',
     password: 'xxxx xxxx xxxx xxxx xxxx xxxx'  // Application Password
@@ -357,7 +357,7 @@ pip install requests python-dotenv pandas
    - Validate data before sending to API
 
 4. **Use HTTPS in production**
-   - Local development: `http://organicstore.local` is OK
+   - Local development: `http://myproject.local` is OK
    - Production: **MUST** use `https://`
 
 5. **Handle errors gracefully**
@@ -374,7 +374,7 @@ pip install requests python-dotenv pandas
 
 ```bash
 # Use test environment
-export WP_API_BASE_URL=http://test.organicstore.local/wp-json
+export WP_API_BASE_URL=http://test.myproject.local/wp-json
 
 # Use small sample data
 node script.js --file=sample-data-small.csv
@@ -410,7 +410,7 @@ node delete-posts.js --file=rollback.json
 cp .env.example .env
 
 # Edit .env and add:
-WP_API_BASE_URL=http://organicstore.local/wp-json
+WP_API_BASE_URL=http://myproject.local/wp-json
 WP_API_AUTH=admin:your_app_password_here
 ```
 

@@ -118,13 +118,13 @@ WordPress backend specialist implementing server-side functionality using WordPr
 - Plugin integration
 
 #### Authority
-- Can modify `/wp-content/themes/organics-child/functions.php`
-- Can create files in `/wp-content/themes/organics-child/inc/`
+- Can modify `/wp-content/themes/your-child-theme/functions.php`
+- Can create files in `/wp-content/themes/your-child-theme/inc/`
 - Can enqueue scripts/styles
 - Can register custom WordPress functionality
 
 #### Limitations
-- **CRITICAL**: Cannot modify parent theme (`/wp-content/themes/organics/`)
+- **CRITICAL**: Cannot modify parent theme (`/wp-content/themes/your-parent-theme/`)
 - Cannot modify WordPress core files
 - Cannot edit plugin files directly
 - Cannot create UI templates (Frontend Designer's job)
@@ -156,13 +156,13 @@ UI/UX specialist responsible for visual implementation and user interface compon
 - Accessibility implementation
 
 #### Authority
-- Can create/modify templates in `/wp-content/themes/organics-child/`
-- Can modify `/wp-content/themes/organics-child/style.css`
-- Can create CSS files in `/wp-content/themes/organics-child/css/`
-- Can create JS files in `/wp-content/themes/organics-child/js/`
+- Can create/modify templates in `/wp-content/themes/your-child-theme/`
+- Can modify `/wp-content/themes/your-child-theme/style.css`
+- Can create CSS files in `/wp-content/themes/your-child-theme/css/`
+- Can create JS files in `/wp-content/themes/your-child-theme/js/`
 
 #### Limitations
-- **CRITICAL**: Cannot modify parent theme (`/wp-content/themes/organics/`)
+- **CRITICAL**: Cannot modify parent theme (`/wp-content/themes/your-parent-theme/`)
 - Cannot implement backend logic (Backend Engineer's job)
 - Cannot create AJAX handlers (Backend Engineer's job)
 - Cannot modify `functions.php` without coordinating with Backend Engineer

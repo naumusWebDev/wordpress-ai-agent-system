@@ -150,7 +150,7 @@ function loadConfig() {
 
   if (!config.baseUrl) {
     console.error('Error: WP_API_BASE_URL environment variable is required');
-    console.error('Example: export WP_API_BASE_URL=http://organicstore.local/wp-json');
+    console.error('Example: export WP_API_BASE_URL=http://myproject.local/wp-json');
     process.exit(1);
   }
 

@@ -1,11 +1,9 @@
 {
   "allowedTools": [
     "Edit",
-
     "Bash(ls:*)",
     "Bash(pwd:*)",
     "Bash(whoami:*)",
-
     "Bash(cat:*)",
     "Bash(sed:*)",
     "Bash(awk:*)",
@@ -25,7 +23,6 @@
     "Bash(git switch:*)",
     "Bash(git checkout:*)",
     "Bash(git restore:*)",
-
     "Bash(git add:*)",
     "Bash(git commit:*)",
     "Bash(wp:*)",
@@ -36,5 +33,10 @@
     "Conservative allowlist: edits + safe read/inspect commands + git commit.",
     "Intentionally NOT allowing rm, mv, curl, wget, docker, wp-cli by default.",
     "Add more tools per project using /permissions or by extending this file."
-  ]
+  ],
+  "permissions": {
+    "allow": [
+      "Bash(wp:*)"
+    ]
+  }
 }

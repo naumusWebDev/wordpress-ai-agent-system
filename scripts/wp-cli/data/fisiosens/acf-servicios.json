@@ -1,0 +1,60 @@
+{
+  "title": "Detalles del Servicio",
+  "key": "group_detalles_servicio",
+  "location": [
+    [{ "param": "post_type", "operator": "==", "value": "servicios" }]
+  ],
+  "position": "normal",
+  "style": "default",
+  "active": true,
+  "fields": [
+    {
+      "key": "field_duracion_sesion",
+      "label": "Duración de la sesión",
+      "name": "duracion_sesion",
+      "type": "text",
+      "required": 1,
+      "instructions": "Ej: 60 minutos",
+      "placeholder": "60 minutos"
+    },
+    {
+      "key": "field_precio",
+      "label": "Precio aproximado",
+      "name": "precio",
+      "type": "text",
+      "required": 0,
+      "instructions": "Ej: 50€",
+      "placeholder": "50€"
+    },
+    {
+      "key": "field_beneficios",
+      "label": "Beneficios principales",
+      "name": "beneficios",
+      "type": "textarea",
+      "required": 1,
+      "instructions": "Lista los principales beneficios del tratamiento",
+      "rows": 5
+    },
+    {
+      "key": "field_para_quien",
+      "label": "¿Para quién está indicado?",
+      "name": "para_quien",
+      "type": "wysiwyg",
+      "required": 0,
+      "instructions": "Describe el público objetivo de este servicio",
+      "tabs": "all",
+      "toolbar": "full",
+      "media_upload": 0
+    },
+    {
+      "key": "field_icono_servicio",
+      "label": "Icono del servicio",
+      "name": "icono_servicio",
+      "type": "image",
+      "required": 0,
+      "instructions": "Imagen cuadrada 200x200px",
+      "return_format": "id",
+      "preview_size": "thumbnail"
+    }
+  ]
+}

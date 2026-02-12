@@ -395,7 +395,7 @@ Complete
 ### For All Agents
 
 1. **Never modify WordPress core files**
-2. **Never modify parent theme** (`/wp-content/themes/organics/`)
+2. **Never modify parent theme** (`/wp-content/themes/your-parent-theme/`)
 3. **Never commit secrets** (`.env`, passwords, API keys)
 4. **Never skip human confirmation** for irreversible actions
 5. **Always respect agent boundaries**

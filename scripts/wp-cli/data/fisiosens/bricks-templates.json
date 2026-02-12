@@ -1,0 +1,27 @@
+[
+  {
+    "title": "Header Principal",
+    "type": "header",
+    "conditions": { "type": "entireWebsite" }
+  },
+  {
+    "title": "Footer Principal",
+    "type": "footer",
+    "conditions": { "type": "entireWebsite" }
+  },
+  {
+    "title": "Single - Post Blog",
+    "type": "single",
+    "conditions": { "type": "postType", "value": "post" }
+  },
+  {
+    "title": "Single - Servicio",
+    "type": "single",
+    "conditions": { "type": "postType", "value": "servicios" }
+  },
+  {
+    "title": "Archive - Servicios",
+    "type": "archive",
+    "conditions": { "type": "archivePostType", "value": "servicios" }
+  }
+]

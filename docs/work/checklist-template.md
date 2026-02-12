@@ -66,8 +66,8 @@ Use this template for complex features that require multiple steps and coordinat
 **Owner**: Backend Engineer
 **Status**: ⬜ Not Started / 🟡 In Progress / ✅ Complete
 **Files Modified**:
-- `/wp-content/themes/organics-child/functions.php`
-- `/wp-content/themes/organics-child/inc/[feature-name].php`
+- `/wp-content/themes/your-child-theme/functions.php`
+- `/wp-content/themes/your-child-theme/inc/[feature-name].php`
 
 ---
 
@@ -82,9 +82,9 @@ Use this template for complex features that require multiple steps and coordinat
 **Owner**: Frontend Designer
 **Status**: ⬜ Not Started / 🟡 In Progress / ✅ Complete
 **Files Modified**:
-- `/wp-content/themes/organics-child/template-parts/[template].php`
-- `/wp-content/themes/organics-child/style.css`
-- `/wp-content/themes/organics-child/js/[script].js`
+- `/wp-content/themes/your-child-theme/template-parts/[template].php`
+- `/wp-content/themes/your-child-theme/style.css`
+- `/wp-content/themes/your-child-theme/js/[script].js`
 
 ---
 

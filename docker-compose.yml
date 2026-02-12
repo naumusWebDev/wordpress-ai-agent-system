@@ -4,10 +4,10 @@ services:
   # MySQL Database
   db:
     image: mysql:8.0
-    container_name: organicstore_db
+    container_name: ${COMPOSE_PROJECT_NAME:-wordpress}_db
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: ${DB_NAME:-organicstore}
+      MYSQL_DATABASE: ${DB_NAME:-wordpress}
       MYSQL_USER: ${DB_USER:-wordpress}
       MYSQL_PASSWORD: ${DB_PASSWORD:-wordpress}
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-rootpassword}
@@ -21,20 +21,20 @@ services:
   # WordPress with PHP 8.3
   wordpress:
     image: wordpress:php8.3-apache
-    container_name: organicstore_wordpress
+    container_name: ${COMPOSE_PROJECT_NAME:-wordpress}_wordpress
     restart: unless-stopped
     depends_on:
       - db
     environment:
       WORDPRESS_DB_HOST: db:3306
-      WORDPRESS_DB_NAME: ${DB_NAME:-organicstore}
+      WORDPRESS_DB_NAME: ${DB_NAME:-wordpress}
       WORDPRESS_DB_USER: ${DB_USER:-wordpress}
       WORDPRESS_DB_PASSWORD: ${DB_PASSWORD:-wordpress}
       WORDPRESS_TABLE_PREFIX: ${DB_TABLE_PREFIX:-wp_}
       WORDPRESS_DEBUG: ${WP_DEBUG:-1}
       WORDPRESS_CONFIG_EXTRA: |
-        define('WP_HOME', '${WP_HOME:-http://organicstore.local}');
-        define('WP_SITEURL', '${WP_SITEURL:-http://organicstore.local}');
+        define('WP_HOME', '${WP_HOME:-http://localhost}');
+        define('WP_SITEURL', '${WP_SITEURL:-http://localhost}');
     volumes:
       # Mount the entire project root to WordPress root
       - ./:/var/www/html
@@ -50,13 +50,13 @@ services:
   # WP-CLI service
   wpcli:
     image: wordpress:cli-php8.3
-    container_name: organicstore_wpcli
+    container_name: ${COMPOSE_PROJECT_NAME:-wordpress}_wpcli
     depends_on:
       - db
       - wordpress
     environment:
       WORDPRESS_DB_HOST: db:3306
-      WORDPRESS_DB_NAME: ${DB_NAME:-organicstore}
+      WORDPRESS_DB_NAME: ${DB_NAME:-wordpress}
       WORDPRESS_DB_USER: ${DB_USER:-wordpress}
       WORDPRESS_DB_PASSWORD: ${DB_PASSWORD:-wordpress}
     volumes:
