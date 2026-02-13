@@ -1,0 +1,36 @@
+{
+  "pages": [
+    { "title": "Inicio", "slug": "/", "status": "publish" },
+    { "title": "Sobre nosotros", "slug": "/sobre-nosotros", "status": "publish" },
+    { "title": "Blog", "slug": "/blog", "status": "publish" },
+    { "title": "Contacto", "slug": "/contacto", "status": "publish" },
+    { "title": "Política de privacidad", "slug": "/politica-privacidad", "status": "publish" },
+    { "title": "Política de cookies", "slug": "/politica-cookies", "status": "publish" },
+    { "title": "Aviso legal", "slug": "/aviso-legal", "status": "publish" }
+  ],
+  "cpts": [
+    {
+      "name": "Servicios",
+      "slug": "servicios",
+      "supports": ["title", "editor", "thumbnail", "excerpt"],
+      "acf_fields": [
+        { "name": "duracion_sesion", "type": "text", "label": "Duración de la sesión", "required": true },
+        { "name": "precio", "type": "text", "label": "Precio aproximado", "required": false },
+        { "name": "beneficios", "type": "textarea", "label": "Beneficios principales", "required": true },
+        { "name": "para_quien", "type": "wysiwyg", "label": "¿Para quién está indicado?", "required": false },
+        { "name": "icono_servicio", "type": "image", "label": "Icono del servicio", "required": false }
+      ]
+    }
+  ],
+  "menus": [
+    { "name": "Principal", "items": ["Inicio", "Sobre nosotros", "Blog", "Contacto"] },
+    { "name": "Footer", "items": ["Política de privacidad", "Política de cookies", "Aviso legal"] }
+  ],
+  "bricks_templates": [
+    { "name": "Header", "type": "header" },
+    { "name": "Footer", "type": "footer" },
+    { "name": "Single Servicio", "type": "single", "for": "servicios" },
+    { "name": "Archive Servicios", "type": "archive", "for": "servicios" },
+    { "name": "Blog", "type": "archive", "for": "post" }
+  ]
+}

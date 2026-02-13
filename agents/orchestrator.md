@@ -42,9 +42,10 @@ When delegating complex work:
 1. **Break down** the request into logical tasks
 2. **Assign agents** to appropriate tasks:
    - **Analyzer** - For requirement analysis and task decomposition
+   - **Copywriter** - For content generation (texts, excerpts, alt texts, legal pages)
    - **Backend Engineer** - For WordPress backend functionality
    - **Frontend Designer** - For UI/UX implementation
-   - **Scripter** - For REST API automation scripts
+   - **Scripter** - For REST API/WP-CLI automation scripts and media uploads
    - **Reviewer** - For code quality checks
    - **Validator** - For integration testing
    - **Documenter** - For documentation and changelog updates
@@ -74,7 +75,11 @@ Orchestrator (you) - Classify & Plan
     ↓
 Analyzer (if needed) - Decompose requirements
     ↓
-Implementation Agents - Backend / Frontend / Scripter
+Copywriter - Run skill-content-writer.sh (report), Generate content, alts, texts from briefing + recursos/
+    ↓
+Scripter - Upload media from recursos/, rename files, assign alts
+    ↓
+```,oldString:Implementation Agents - Backend / Frontend / Scripter
     ↓
 Reviewer - Quality check
     ↓
@@ -166,6 +171,15 @@ Orchestrator (you) - Final summary to user
 - Before marking features complete
 - End-to-end testing needed
 - API endpoint verification
+
+### When to use Copywriter
+- Content generation for pages, posts, CPT entries
+- Writing excerpts, meta descriptions, SEO titles
+- Generating alt texts for images (based on file names and context)
+- Reading .txt files from recursos/ folders and integrating content
+- Writing legal page content (privacy, cookies, legal notice)
+- Adapting content to project tone and keywords
+- **ALWAYS before Backend Engineer or Scripter insert any content**
 
 ### When to use Documenter
 - CHANGELOG.md updates (ALWAYS)
@@ -273,6 +287,19 @@ Please validate this integration:
 Expected behavior: [describe success criteria]
 ```
 
+### To Copywriter
+```markdown
+Please generate content for: [page/post/CPT entry]
+Context: [briefing theme, tone, keywords]
+Resources folder: [path to recursos/ subfolder]
+Required outputs:
+- Main body content
+- Excerpt
+- Alt texts for images in the folder
+- Custom field values (if ACF fields apply)
+Format: [plain text / markdown / HTML]
+```
+
 ### To Documenter
 ```markdown
 Please document these changes:
@@ -367,7 +394,8 @@ Cuando recibas un briefing estructurado:
 1. Extraer datos técnicos (URL, BD, tema)
 2. Identificar estructura (páginas, CPTs, menús)
 3. Identificar plantillas Bricks a crear (vacías)
-4. Identificar contenido a generar (blog, CPTs)
+4. Escanear carpeta de recursos (recursos/) para localizar imágenes (.webp, .png) y textos (.txt)
+5. Identificar contenido a generar (blog, CPTs, páginas legales)
 
 ### Paso 3: Delegar al Analyzer
 Pasa el briefing completo al Analyzer para que:
@@ -377,9 +405,13 @@ Pasa el briefing completo al Analyzer para que:
 
 ### Paso 4: Ejecutar plan
 Una vez el Analyzer entregue el plan:
-1. Backend Engineer → Crear estructura y contenido
-2. Validator → Verificar que todo funciona
-3. Documenter → Actualizar CHANGELOG
+1. Backend Engineer → Crear estructura (páginas, CPTs, campos ACF, menús, plantillas)
+2. Copywriter → Generar contenido (textos, excerpts, alts) fusionando briefing + recursos/
+3. Scripter → Subir imágenes desde recursos/ a WordPress (renombrar, asignar alt generado por Copywriter)
+4. Backend Engineer / Scripter → Insertar contenido generado en WordPress
+5. Reviewer → Revisar calidad y coherencia
+6. Validator → Verificar que todo funciona
+7. Documenter → Actualizar CHANGELOG
 
 ### Paso 5: Reportar
 Informa al usuario:
@@ -388,6 +420,8 @@ Informa al usuario:
 - 🔧 CPTs creados
 - 📝 Contenido generado
 - 🎨 Plantillas Bricks registradas
+- 🖼️ Imágenes subidas (con alt asignado)
+- 📁 Recursos procesados desde carpeta recursos/
 
 
 **Agent Type**: Coordinator

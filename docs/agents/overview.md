@@ -41,7 +41,7 @@ User Request → Orchestrator → Specialized Agents → Coordinated Outcome
 
 ---
 
-## The Nine Agents
+## The Ten Agents
 
 ### 1. Orchestrator 🎯
 **Role**: Coordinator and workflow manager
@@ -82,7 +82,33 @@ User Request → Orchestrator → Specialized Agents → Coordinated Outcome
 
 ---
 
-### 3. Backend Engineer ⚙️
+### 3. Copywriter ✍️
+**Role**: Content generation specialist
+**Domain**: Textual content, excerpts, alt texts, legal pages
+**Invocation**: `/project:generate-content [task]`
+
+**Responsibilities**:
+- Generate body content for pages, posts, and CPT entries
+- Write excerpts, SEO titles, and meta descriptions
+- Generate alt texts for images based on file names and project context
+- Read .txt files from `recursos/` folders and use as content source
+- Produce legal page content (privacy, cookies, legal notice)
+- Adapt content to project tone, audience, and keywords
+
+**Does NOT**:
+- Write or modify code
+- Upload media or execute scripts
+- Make technical decisions
+
+**Critical Rules**:
+- **Always check `recursos/` folder** before generating content
+- .txt files in `recursos/` are content sources, NOT image alt texts
+- Alt texts are always auto-generated from image file names + context
+- Content from briefing and `recursos/` must be **fused** (both sources used)
+
+---
+
+### 4. Backend Engineer ⚙️
 **Role**: WordPress backend specialist
 **Domain**: Server-side WordPress implementation
 **Invocation**: `/project:backend-task [task]`
@@ -103,7 +129,7 @@ User Request → Orchestrator → Specialized Agents → Coordinated Outcome
 
 ---
 
-### 4. Frontend Designer 🎨
+### 5. Frontend Designer 🎨
 **Role**: UI/UX specialist
 **Domain**: User interface and visual design
 **Invocation**: `/project:frontend-task [task]`
@@ -125,7 +151,7 @@ User Request → Orchestrator → Specialized Agents → Coordinated Outcome
 
 ---
 
-### 5. Reviewer ✅
+### 6. Reviewer ✅
 **Role**: Quality assurance specialist
 **Domain**: Code review and standards compliance
 **Invocation**: `/project:review-changes [changes]`
@@ -146,7 +172,7 @@ User Request → Orchestrator → Specialized Agents → Coordinated Outcome
 
 ---
 
-### 6. Scripter 🤖
+### 7. Scripter 🤖
 **Role**: Automation specialist
 **Domain**: REST API scripts and batch operations
 **Invocation**: `/project:create-wp-api-script [task]`
@@ -166,7 +192,7 @@ User Request → Orchestrator → Specialized Agents → Coordinated Outcome
 
 ---
 
-### 7. Validator 🧪
+### 8. Validator 🧪
 **Role**: Integration tester
 **Domain**: End-to-end testing and verification
 **Invocation**: `/project:validate-integration [feature]`
@@ -186,7 +212,7 @@ User Request → Orchestrator → Specialized Agents → Coordinated Outcome
 
 ---
 
-### 8. Documenter 📝
+### 9. Documenter 📝
 **Role**: Documentation specialist
 **Domain**: Documentation and changelog management
 **Invocation**: `/project:update-docs-and-changelog [changes]`
@@ -206,7 +232,7 @@ User Request → Orchestrator → Specialized Agents → Coordinated Outcome
 
 ---
 
-### 9. Legacy Initializer 🔍
+### 10. Legacy Initializer 🔍
 **Role**: Forensic analyst for legacy WordPress projects
 **Domain**: Existing production site onboarding
 **Invocation**: `/project:run-legacy-initializer`
@@ -285,6 +311,10 @@ User Request
 Orchestrator (classify: complex)
     ↓
 Analyzer (decompose requirements)
+    ↓
+Copywriter (generate content, alts, from briefing + recursos/)
+    ↓
+Scripter (upload media from recursos/, rename, assign alts)
     ↓
 Implementation Agents
     ├─ Backend Engineer (server-side)
@@ -405,6 +435,10 @@ Complete
 **Analyzer**:
 - ❌ **Absolutely forbidden to write code**
 
+**Copywriter**:
+- ❌ **Never writes or modifies code**
+- ✅ **Always checks `recursos/` folder before generating content**
+
 **Backend Engineer & Frontend Designer**:
 - ❌ **Never touch parent theme, only child theme**
 
@@ -432,9 +466,10 @@ Backend Engineer → Reviewer → Validator → Documenter
 ### Parallel (Simultaneous)
 
 ```
-                 ┌─ Backend Engineer ─┐
+                 ┌─ Copywriter ────────┐
+                 ├─ Backend Engineer ──┤
 Orchestrator ────┼─ Frontend Designer ─┼── Reviewer
-                 └─ Scripter ─────────┘
+                 └─ Scripter ──────────┘
 ```
 
 **When**: Tasks are independent and can run concurrently
@@ -456,6 +491,7 @@ Backend Engineer → Reviewer → [Issues Found] → Backend Engineer
 ```
 /project:run-orchestrator Add a newsletter signup form
 /project:analyze-requirement Implement product filtering
+/project:generate-content Generate blog posts about physiotherapy
 /project:backend-task Create custom post type for events
 /project:frontend-task Style the contact form
 /project:review-changes Check the latest changes
@@ -542,5 +578,5 @@ Backend Engineer → Reviewer → [Issues Found] → Backend Engineer
 
 ---
 
-**Last Updated**: 2026-01-15
+**Last Updated**: 2026-02-13
 **Maintained By**: Documenter Agent

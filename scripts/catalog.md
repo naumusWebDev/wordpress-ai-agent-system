@@ -99,6 +99,29 @@ Bash scripts that operate WordPress via WP-CLI. All scripts require `--wp-path=<
 
 **Purpose**: Create WordPress navigation menus with items from JSON.
 
+---
+
+## Content & Media Skills (`scripts/wp-cli/`)
+
+Specialized "skills" that bridge content generation and technical implementation.
+
+### skill-content-writer.sh
+
+**Purpose**: Orchestrates content generation workflow. Used by the Copywriter to scan for missing content and by the Scripter to sync assets.
+
+```bash
+# Get report of missing content based on briefing
+./scripts/wp-cli/skill-content-writer.sh --project-json=data/project/briefing.json --action=report
+
+# Prepare folder structure for content
+./scripts/wp-cli/skill-content-writer.sh --project-json=data/project/briefing.json --action=prepare-drafts
+
+# Scan images for alt text processing
+./scripts/wp-cli/skill-content-writer.sh --project-json=data/project/briefing.json --action=sync-assets
+```
+
+**Actions**: `report`, `prepare-drafts`, `sync-assets`.
+
 ```bash
 ./scripts/wp-cli/create-menus.sh --wp-path="/path/to/wordpress" \
   --file=data/myproject/menus.json

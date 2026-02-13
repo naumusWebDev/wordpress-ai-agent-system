@@ -150,6 +150,69 @@
 - **Condiciones de visualización:**
 - **Estado:**
 
+### 2.6 Recursos (Imágenes y Contenidos)
+
+**Ruta raíz de recursos (formato Linux):** `./recursos/[nombre-proyecto]/`
+
+**Estructura de carpetas:**
+
+```
+recursos/[nombre-proyecto]/
+├── general/                    # Logo, favicon, imágenes globales
+│   ├── [sitio]-logo.webp
+│   ├── [sitio]-favicon.png
+│   └── ...
+├── paginas/                    # Una subcarpeta por página
+│   ├── inicio/
+│   │   ├── inicio-[sitio].webp
+│   │   └── inicio.txt          # Contenido principal de la página
+│   ├── sobre-nosotros/
+│   │   ├── sobre-nosotros-[sitio].webp
+│   │   └── sobre-nosotros.txt
+│   └── contacto/
+│       └── contacto-[sitio].webp
+├── entradas/                   # Una subcarpeta por entrada de blog
+│   ├── mi-primer-post/
+│   │   ├── mi-primer-post-[sitio].webp
+│   │   └── mi-primer-post.txt  # Contenido del post
+│   └── ...
+└── cpt-[slug]/                 # Una subcarpeta por entrada de cada CPT
+    ├── entrada-uno/
+    │   ├── entrada-uno-[sitio].webp
+    │   └── entrada-uno.txt     # Contenido de la entrada CPT
+    └── ...
+```
+
+**Convención de nombres:**
+- Logo: `[sitio]-logo.webp` o `.png`
+- Favicon: `[sitio]-favicon.png` o `.webp`
+- Imágenes de página: `[slug]-[sitio].webp` o `.png`
+- Imágenes de entrada/CPT: `[slug]-[sitio].webp` o `.png`
+- Formatos permitidos: `.webp`, `.png`
+
+**Archivos de contenido (.txt):**
+- Contienen el contenido principal de la página, entrada o CPT
+- Nombre: `[slug].txt` (dentro de la subcarpeta correspondiente)
+- Si existe, el Copywriter lo usa como fuente principal de contenido
+- Si no existe, el Copywriter genera el contenido desde cero usando el briefing
+
+**Alt de imágenes:**
+- El agente Copywriter genera automáticamente el alt de cada imagen basándose en el nombre del archivo y el contexto del proyecto
+- No se necesitan archivos de alt por separado
+
+**Proceso de subida de imágenes:**
+1. El Scripter escanea la carpeta de recursos
+2. Sube cada imagen a la librería de medios de WordPress
+3. Renombra el archivo según convención si es necesario
+4. Asigna el alt generado por el Copywriter
+5. Asocia la imagen como destacada o en campo ACF según corresponda
+
+**Skill de Automatización de Contenido:**
+El sistema cuenta con una skill técnica (`skill-content-writer.sh`) que permite:
+- Generar un informe de qué contenidos faltan en la carpeta de recursos.
+- Preparar la estructura de carpetas y archivos `.txt` automáticamente según el briefing.
+- Sincronizar los alts generados con la subida de medios.
+
 ---
 
 ## 3. TEMÁTICA Y CONTEXTO DEL PROYECTO
@@ -277,6 +340,9 @@
 - [ ] Estructura de contenidos navegable y funcional
 - [ ] Contenido generado es coherente con la temática
 - [ ] Páginas legales creadas con contenido básico
+- [ ] Todas las imágenes de recursos/ subidas a WordPress con alt asignado
+- [ ] Logo y favicon configurados en el tema
+- [ ] Contenido de .txt en recursos/ integrado en las páginas/entradas correspondientes
 
 ---
 
@@ -294,7 +360,11 @@
    - Tipo (Header/Footer/Single/Archive)
    - Condiciones de visualización configuradas
    - Estado (Activa/Inactiva)
-7. 📊 Reporte final con resumen de todo lo implementado
+7. �️ Listado de imágenes subidas:
+   - Nombre del archivo
+   - Alt asignado
+   - Asociación (página, entrada, CPT, campo ACF)
+8. �📊 Reporte final con resumen de todo lo implementado
 
 ---
 
@@ -313,8 +383,10 @@
   1. Crear estructura (páginas incluyendo legales, CPTs, campos ACF)
   2. Crear plantillas Bricks vacías con nombres y condiciones
   3. Configurar menús
-  4. Generar contenido (blog, CPTs, páginas legales)
-  5. Verificación final
+  4. Copywriter genera contenido (fusionando briefing + recursos/)
+  5. Scripter sube imágenes desde recursos/ (renombra, asigna alt del Copywriter)
+  6. Backend/Scripter inserta contenido y asocia imágenes
+  7. Verificación final
 
 ---
 
@@ -326,6 +398,7 @@
 - [ ] Plugin ACF Pro instalado y activado (si se usan custom fields)
 - [ ] Otros plugins necesarios instalados
 - [ ] Briefing completo y claro
+- [ ] Carpeta de recursos preparada según convención (recursos/[nombre-proyecto]/)
 - [ ] Backup realizado (si hay contenido previo)
 
 ---
