@@ -1,0 +1,82 @@
+/* Global design tokens for AI-generated and manually-authored layouts. */
+:root {
+  /* Primitive color tokens */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-slate-50: #f8fafc;
+  --color-slate-100: #f1f5f9;
+  --color-slate-200: #e2e8f0;
+  --color-slate-500: #64748b;
+  --color-slate-700: #334155;
+  --color-slate-900: #0f172a;
+  --color-blue-500: #3b82f6;
+  --color-blue-600: #2563eb;
+  --color-indigo-600: #4f46e5;
+  --color-red-600: #dc2626;
+
+  /* Semantic color tokens */
+  --color-bg-page: var(--color-white);
+  --color-bg-surface: var(--color-slate-50);
+  --color-bg-elevated: var(--color-white);
+  --color-text-primary: var(--color-slate-900);
+  --color-text-secondary: var(--color-slate-700);
+  --color-text-muted: var(--color-slate-500);
+  --color-border-default: var(--color-slate-200);
+  --color-action-primary: var(--color-blue-600);
+  --color-action-primary-hover: var(--color-indigo-600);
+  --color-action-secondary: var(--color-slate-100);
+  --color-action-secondary-hover: var(--color-slate-200);
+  --color-danger: var(--color-red-600);
+
+  /* Typography tokens */
+  --font-family-sans: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.7;
+
+  /* Spacing scale */
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* Radius and shadow tokens */
+  --radius-none: 0;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --shadow-sm: 0 1px 2px rgb(15 23 42 / 0.08);
+  --shadow-md: 0 8px 20px rgb(15 23 42 / 0.12);
+  --shadow-lg: 0 16px 40px rgb(15 23 42 / 0.14);
+
+  /* Layout tokens */
+  --container-max-width: 75rem;
+  --container-padding-inline: var(--space-4);
+  --section-padding-block: var(--space-16);
+
+  /* Breakpoint tokens */
+  --breakpoint-sm: 36rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 80rem;
+}

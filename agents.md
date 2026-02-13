@@ -155,6 +155,19 @@ All agents are defined in `/agents/*.md` and are invoked via slash commands or d
 
 ---
 
+## Technical Resources & Standards
+
+### Design System & Bricks Builder
+The system follows a strict Design System and Bricks Builder element policy:
+- **Design System** (`/design-system/`): Defines tokens, base styles, components, and utilities.
+- **Bricks Catalog** (`/catalog/bricks-catalog.json`): Authoritative list of allowed Bricks elements and their settings.
+- **Validation** (`/validation/`): Schema and JS validator to ensure AI-generated layouts are correct and future-proof.
+- **Examples** (`/examples/`): Hero sections and other layouts following these standards.
+
+Agents (especially Frontend Designer and Reviewer) MUST consult these resources to ensure consistency.
+
+---
+
 ## Global System Rules
 
 ### Workflow

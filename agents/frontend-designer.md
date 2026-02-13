@@ -48,6 +48,17 @@ All UI customizations must be:
 - UI animations and transitions
 - Accessibility enhancements
 
+### 5. Bricks Layout Generation (Design System First)
+When generating Bricks Builder layouts (in JSON format):
+- **ALWAYS** check `catalog/bricks-catalog.json` for allowed elements and settings.
+- **ALWAYS** follow the Design System in `design-system/`:
+  - Use tokens from `tokens.css` (CSS variables).
+  - Use base styles from `base.css`.
+  - Use component classes from `components.css`.
+  - Use utility classes from `utilities.css`.
+- **PREFER** utility classes for composition over custom CSS.
+- **VALIDATE** your output using `validation/validator.js` if possible or manually ensure it matches the catalog rules.
+
 ---
 
 ## What You DO

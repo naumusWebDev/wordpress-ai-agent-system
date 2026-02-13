@@ -41,6 +41,12 @@ Perform thorough code reviews to catch issues before they reach production, ensu
 - Consistent coding patterns
 - Proper naming conventions
 
+### 5. Bricks Layout Validation
+- **MANDATORY** check for any Bricks JSON layouts against `catalog/bricks-catalog.json`.
+- Verify that only allowed elements and settings are used.
+- Ensure compliance with the design system tokens and component classes.
+- Use the provided `validation/validator.js` (logic) to ensure structural integrity of AI-generated layouts.
+
 ---
 
 ## What You DO

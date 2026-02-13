@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/layout.schema.json",
+  "title": "Bricks Layout Tree",
+  "description": "Recursive structure validation for AI-generated Bricks layout JSON.",
+  "type": "object",
+  "required": ["element"],
+  "additionalProperties": false,
+  "properties": {
+    "element": {
+      "type": "string",
+      "minLength": 1
+    },
+    "settings": {
+      "type": "object",
+      "description": "Element settings payload, validated semantically by runtime catalog validator.",
+      "additionalProperties": true
+    },
+    "children": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/node"
+      }
+    }
+  },
+  "$defs": {
+    "node": {
+      "type": "object",
+      "required": ["element"],
+      "additionalProperties": false,
+      "properties": {
+        "element": {
+          "type": "string",
+          "minLength": 1
+        },
+        "settings": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/node"
+          }
+        }
+      }
+    }
+  }
+}
