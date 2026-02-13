@@ -208,6 +208,30 @@ Creates fields **in the database** (not PHP), making them visible and editable i
 
 ---
 
+### update-page-bricks-content.sh
+
+**Purpose**: Inject a Bricks layout (from nested JSON) into an existing page's `_bricks_page_content_2` meta.
+
+```bash
+# Dry run — preview the flat Bricks array
+./scripts/wp-cli/update-page-bricks-content.sh \
+  --wp-path="/path/to/wordpress" \
+  --slug=inicio \
+  --file=data/fisiosens/hero-inicio.json --dry-run
+
+# Apply
+./scripts/wp-cli/update-page-bricks-content.sh \
+  --wp-path="/path/to/wordpress" \
+  --slug=inicio \
+  --file=data/fisiosens/hero-inicio.json
+```
+
+**Input format**: Same nested JSON as `examples/hero-section.json` (catalog tree format). The script converts `class` → `_cssClasses` and `level` → `tag` automatically.
+
+**Options**: `--wp-path`, `--slug` (required), `--file` (required), `--dry-run`
+
+---
+
 ### create-bricks-templates.sh
 
 **Purpose**: Create Bricks Builder templates with display conditions.
@@ -296,6 +320,7 @@ Each project directory contains the JSON definitions consumed by the scripts abo
 | `acf-*.json` | `create-acf-fields.sh` |
 | `bricks-templates.json` | `create-bricks-templates.sh` |
 | `menus.json` | `create-menus.sh` |
+| `hero-inicio.json` | `update-page-bricks-content.sh` |
 | `*.json` (content) | `create-posts.sh` |
 
 ---

@@ -50,6 +50,12 @@
   background-color: var(--color-bg-page);
 }
 
+.hero {
+  padding-block: var(--space-16);
+  background-color: var(--color-action-primary);
+  color: var(--color-white);
+}
+
 .container {
   width: min(100% - (var(--container-padding-inline) * 2), var(--container-max-width));
   margin-inline: auto;

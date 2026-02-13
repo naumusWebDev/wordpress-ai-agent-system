@@ -1,0 +1,39 @@
+{
+  "element": "section",
+  "settings": {
+    "class": "section"
+  },
+  "children": [
+    {
+      "element": "container",
+      "settings": {
+        "class": "container flex flex-col items-center text-center gap-6"
+      },
+      "children": [
+        {
+          "element": "heading",
+          "settings": {
+            "level": "h1",
+            "text": "Fisioterapia Avanzada en FisioSens",
+            "class": "mb-4"
+          }
+        },
+        {
+          "element": "text",
+          "settings": {
+            "text": "Recupera tu movilidad y bienestar con tratamientos personalizados y tecnología de vanguardia.",
+            "class": "mb-6 max-w-screen-lg"
+          }
+        },
+        {
+          "element": "button",
+          "settings": {
+            "text": "Pide tu cita",
+            "url": "/contacto",
+            "class": "btn-primary"
+          }
+        }
+      ]
+    }
+  ]
+}
